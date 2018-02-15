@@ -5,7 +5,9 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {posts : []};
+    this.state = {
+      posts : [],
+    };
   }
 
   componentDidMount() {
@@ -15,29 +17,31 @@ class App extends React.Component {
           this.setState({ posts });
         })
   }
-
-  /*
-    componentDidMount()  {
-  this.setState(
-  posts:[
-    {"title":"title1","content":"content1"},
-    {"title":"title2","content":"content2"},
-    {"title":"title3","content":"content3"}
-  ]
-  );
-    }
-  */
+  
   render(){
     return (
-      <ul>
+      <div>
         { this.state.posts.map(
-          post => <li>{post.title} {post.content}</li>
-      )}
-      </ul>
+          post => <Post title={post.title} content={post.content}/>
+        )}
+      </div>
+
 		)
   }
 }
 
+function Post(props){
+  return (
+    <div>
+     <div className="title">
+       {props.title}
+     </div>
+     <div className="content">
+     {props.content}
+     </div>
+   </div>
+ );
+}
 
 
 ReactDOM.render(
