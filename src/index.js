@@ -57,7 +57,7 @@ function Post(props) {
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", content: "", postType: "" };
+    this.state = { title: "rerwer", content: "sdsadsad", postType: "REGULAR" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -65,9 +65,9 @@ class NameForm extends React.Component {
 
   handleChange(event) {
     this.setState({
-      title: event.target.title,
-      content: event.target.content,
-      postType: event.target.postType
+      title: event.target.value.title,
+      content: event.target.value.content,
+      postType: event.target.value.postType
     });
   }
 
@@ -79,8 +79,11 @@ class NameForm extends React.Component {
       content: this.state.content,
       postType: this.state.postType
     };
+    console.log(JSON.stringify(post));
 
-    axios.post(`http://localhost:8080/post/`, { post }).then(res => {
+    const jsonPost = JSON.stringify(post);
+
+    axios.post(`http://localhost:8080/post/`, { jsonPost }).then(res => {
       console.log(res);
       console.log(res.data);
     });
@@ -93,6 +96,7 @@ class NameForm extends React.Component {
           Text:
           <input
             type="text"
+            name="title"
             value={this.state.title}
             onChange={this.handleChange}
           />
@@ -101,13 +105,21 @@ class NameForm extends React.Component {
         <br />
         <label>
           Content:
-          <textarea value={this.state.content} onChange={this.handleChange} />
+          <textarea
+            name="content"
+            value={this.state.content}
+            onChange={this.handleChange}
+          />
         </label>
         <br />
         <br />
         <label>
           Type:
-          <select value={this.state.postType} onChange={this.handleChange}>
+          <select
+            name="postType"
+            value={this.state.postType}
+            onChange={this.handleChange}
+          >
             <option value="REGULAR">REGULAR</option>
             <option value="IMPORTANT">IMPORTANT</option>
             <option value="FLASHNEWS">FLASHNEWS</option>
