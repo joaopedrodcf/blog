@@ -26,11 +26,7 @@ class App extends React.Component {
         </div>
         <div>
           {this.state.posts.map(post => (
-            <Post
-              title={post.title}
-              content={post.content}
-              postType={post.postType}
-            />
+            <Post title={post.title} content={post.content} type={post.type} />
           ))}
         </div>
         <br />
@@ -48,7 +44,7 @@ function Post(props) {
     <div>
       <div className="title">{props.title}</div>
       <div className="content">{props.content}</div>
-      <div className="postType">{props.postType}</div>
+      <div className="type">{props.type}</div>
       <br />
     </div>
   );
@@ -57,28 +53,26 @@ function Post(props) {
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "rerwer", content: "sdsadsad", postType: "REGULAR" };
+    this.state = { title: "", content: "sdsadsad", type: "REGULAR" };
 
+    // needs to bind every function
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // the follwing funcions update the state of the variables
   handleChange(event) {
-    this.setState({
-      title: event.target.value.title,
-      content: event.target.value.content,
-      postType: event.target.value.postType
-    });
+    this.setState({ [event.target.name]: event.target.value });
   }
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.state.title, this.state.content, this.state.postType);
+    console.log(this.state.title, this.state.content, this.state.type);
     axios
       .post(`http://localhost:8080/post/`, {
         title: this.state.title,
         content: this.state.content,
-        postType: this.state.postType
+        type: this.state.type
       })
       .then(res => {
         console.log(res);
@@ -90,7 +84,7 @@ class NameForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Text:
+          Title:
           <input
             type="text"
             name="title"
@@ -113,8 +107,8 @@ class NameForm extends React.Component {
         <label>
           Type:
           <select
-            name="postType"
-            value={this.state.postType}
+            name="type"
+            value={this.state.type}
             onChange={this.handleChange}
           >
             <option value="REGULAR">REGULAR</option>
