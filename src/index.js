@@ -26,7 +26,12 @@ class App extends React.Component {
         </div>
         <div>
           {this.state.posts.map(post => (
-            <Post title={post.title} content={post.content} type={post.type} />
+            <Post
+              key={post.id}
+              title={post.title}
+              content={post.content}
+              type={post.type}
+            />
           ))}
         </div>
         <br />
