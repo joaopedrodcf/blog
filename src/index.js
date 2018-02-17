@@ -73,20 +73,17 @@ class NameForm extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-
-    const post = {
-      title: this.state.title,
-      content: this.state.content,
-      postType: this.state.postType
-    };
-    console.log(JSON.stringify(post));
-
-    const jsonPost = JSON.stringify(post);
-
-    axios.post(`http://localhost:8080/post/`, { jsonPost }).then(res => {
-      console.log(res);
-      console.log(res.data);
-    });
+    console.log(this.state.title, this.state.content, this.state.postType);
+    axios
+      .post(`http://localhost:8080/post/`, {
+        title: this.state.title,
+        content: this.state.content,
+        postType: this.state.postType
+      })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      });
   };
 
   render() {
