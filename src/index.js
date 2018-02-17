@@ -28,6 +28,7 @@ class App extends React.Component {
           {this.state.posts.map(post => (
             <Post
               key={post.id}
+              id={post.id}
               title={post.title}
               content={post.content}
               type={post.type}
@@ -44,15 +45,40 @@ class App extends React.Component {
   }
 }
 
-function Post(props) {
-  return (
-    <div>
-      <div className="title">{props.title}</div>
-      <div className="content">{props.content}</div>
-      <div className="type">{props.type}</div>
-      <br />
-    </div>
-  );
+class Post extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: props.id,
+      title: props.title,
+      content: props.content,
+      type: props.type
+    };
+    // needs to bind every function
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete = event => {
+    event.preventDefault();
+
+    axios.delete(`http://localhost:8080/post/${this.state.id}`).then(res => {
+      console.log(res);
+      console.log(res.data);
+      this.forceUpdate();
+    });
+  };
+
+  render() {
+    return (
+      <div>
+        <div className="title">{this.state.title}</div>
+        <div className="content">{this.state.content}</div>
+        <div className="type">{this.state.type}</div>
+        <br />
+        <button onClick={this.handleDelete}>delete</button>
+      </div>
+    );
+  }
 }
 
 class NameForm extends React.Component {
