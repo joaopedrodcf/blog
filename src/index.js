@@ -31,14 +31,7 @@ class App extends React.Component {
         </div>
         <div>
           {this.state.posts.map(post => (
-            <Post
-              key={post.id}
-              id={post.id}
-              title={post.title}
-              content={post.content}
-              type={post.type}
-              getPosts={() => this.getPosts()}
-            />
+            <Post key={post.id} post={post} getPosts={() => this.getPosts()} />
           ))}
         </div>
         <br />
@@ -57,12 +50,18 @@ class Post extends React.Component {
     // needs to bind every function
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
+    this.state = {
+      id: this.props.post.id,
+      title: this.props.post.title,
+      content: this.props.post.content,
+      type: this.props.post.type
+    };
   }
 
   handleDelete = event => {
     event.preventDefault();
 
-    axios.delete(`http://localhost:8080/post/${this.props.id}`).then(res => {
+    axios.delete(`http://localhost:8080/post/${this.state.id}`).then(res => {
       // here need to fetch again the posts from the webapp
       this.props.getPosts();
     });
@@ -72,10 +71,10 @@ class Post extends React.Component {
     event.preventDefault();
 
     axios
-      .put(`http://localhost:8080/post/${this.props.id}`, {
-        title: this.props.title,
-        content: this.props.content,
-        type: this.props.type
+      .put(`http://localhost:8080/post/${this.state.id}`, {
+        title: this.state.title,
+        content: this.state.content,
+        type: this.state.type
       })
       .then(res => {
         // here need to fetch again the posts from the webapp
@@ -86,9 +85,9 @@ class Post extends React.Component {
   render() {
     return (
       <div>
-        <div className="title">{this.props.title}</div>
-        <div className="content">{this.props.content}</div>
-        <div className="type">{this.props.type}</div>
+        <div className="title">{this.state.title}</div>
+        <div className="content">{this.state.content}</div>
+        <div className="type">{this.state.type}</div>
         <br />
         <button onClick={this.handleDelete}>delete</button>
         <button onClick={this.handleUpdate}>update</button>
