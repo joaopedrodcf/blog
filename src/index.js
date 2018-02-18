@@ -29,16 +29,12 @@ class App extends React.Component {
         <div>
           The following information is retrieved from the GET ALL REST WEBAPI
         </div>
-        <div>
-          {this.state.posts.map(post => (
-            <Post key={post.id} post={post} getPosts={() => this.getPosts()} />
-          ))}
-        </div>
+        {this.state.posts.map(post => (
+          <Post key={post.id} post={post} getPosts={() => this.getPosts()} />
+        ))}
         <br />
         <div>The next next part will be a form to POST REST WEBAPI</div>
-        <div>
-          <NameForm getPosts={() => this.getPosts()} />
-        </div>
+        <NameForm getPosts={() => this.getPosts()} />
       </div>
     );
   }
