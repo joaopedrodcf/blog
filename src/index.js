@@ -9,9 +9,14 @@ class App extends React.Component {
     this.state = {
       posts: []
     };
+    this.getPosts = this.getPosts.bind(this);
   }
 
   componentDidMount() {
+    this.getPosts();
+  }
+
+  getPosts() {
     axios.get(`http://localhost:8080/post/`).then(res => {
       const posts = res.data;
       this.setState({ posts });
@@ -32,13 +37,14 @@ class App extends React.Component {
               title={post.title}
               content={post.content}
               type={post.type}
+              getPosts={() => this.getPosts()}
             />
           ))}
         </div>
         <br />
         <div>The next next part will be a form to POST REST WEBAPI</div>
         <div>
-          <NameForm />
+          <NameForm getPosts={() => this.getPosts()} />
         </div>
       </div>
     );
@@ -48,12 +54,6 @@ class App extends React.Component {
 class Post extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      id: props.id,
-      title: props.title,
-      content: props.content,
-      type: props.type
-    };
     // needs to bind every function
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -61,19 +61,18 @@ class Post extends React.Component {
   handleDelete = event => {
     event.preventDefault();
 
-    axios.delete(`http://localhost:8080/post/${this.state.id}`).then(res => {
-      console.log(res);
-      console.log(res.data);
-      this.forceUpdate();
+    axios.delete(`http://localhost:8080/post/${this.props.id}`).then(res => {
+      // here need to fetch again the posts from the webapp
+      this.props.getPosts();
     });
   };
 
   render() {
     return (
       <div>
-        <div className="title">{this.state.title}</div>
-        <div className="content">{this.state.content}</div>
-        <div className="type">{this.state.type}</div>
+        <div className="title">{this.props.title}</div>
+        <div className="content">{this.props.content}</div>
+        <div className="type">{this.props.type}</div>
         <br />
         <button onClick={this.handleDelete}>delete</button>
       </div>
@@ -106,6 +105,7 @@ class NameForm extends React.Component {
         type: this.state.type
       })
       .then(res => {
+        this.props.getPosts();
         console.log(res);
         console.log(res.data);
       });
