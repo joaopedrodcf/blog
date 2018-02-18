@@ -47,30 +47,27 @@ class Post extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
     this.state = {
-      id: this.props.post.id,
-      title: this.props.post.title,
-      content: this.props.post.content,
-      type: this.props.post.type
+      post: this.props.post
     };
   }
 
   handleDelete = event => {
     event.preventDefault();
 
-    axios.delete(`http://localhost:8080/post/${this.state.id}`).then(res => {
-      // here need to fetch again the posts from the webapp
-      this.props.getPosts();
-    });
+    axios
+      .delete(`http://localhost:8080/post/${this.state.post.id}`)
+      .then(res => {
+        // here need to fetch again the posts from the webapp
+        this.props.getPosts();
+      });
   };
 
   handleUpdate = event => {
     event.preventDefault();
 
     axios
-      .put(`http://localhost:8080/post/${this.state.id}`, {
-        title: this.state.title,
-        content: this.state.content,
-        type: this.state.type
+      .put(`http://localhost:8080/post/${this.state.post.id}`, {
+        post: this.state.post
       })
       .then(res => {
         // here need to fetch again the posts from the webapp
@@ -81,9 +78,9 @@ class Post extends React.Component {
   render() {
     return (
       <div>
-        <div className="title">{this.state.title}</div>
-        <div className="content">{this.state.content}</div>
-        <div className="type">{this.state.type}</div>
+        <div className="title">{this.state.post.title}</div>
+        <div className="content">{this.state.post.content}</div>
+        <div className="type">{this.state.post.type}</div>
         <br />
         <button onClick={this.handleDelete}>delete</button>
         <button onClick={this.handleUpdate}>update</button>
