@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
 
-// This is the main App
+// -------------------------This is the main App--------------------------------
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +19,8 @@ class App extends React.Component {
   getPosts() {
     axios.get(`http://localhost:8080/post/`).then(res => {
       const posts = res.data;
+      console.log(res);
+      console.log(res.data);
       this.setState({ posts });
     });
   }
@@ -34,12 +36,13 @@ class App extends React.Component {
         ))}
         <br />
         <div>The next next part will be a form to POST REST WEBAPI</div>
-        <NameForm getPosts={() => this.getPosts()} />
+        <CreatePostForm getPosts={() => this.getPosts()} />
       </div>
     );
   }
 }
 
+// ---------------------This is is a single Post Component----------------------
 class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -58,6 +61,8 @@ class Post extends React.Component {
       .delete(`http://localhost:8080/post/${this.state.post.id}`)
       .then(res => {
         // here need to fetch again the posts from the webapp
+        console.log(res);
+        console.log(res.data);
         this.props.getPosts();
       });
   };
@@ -67,10 +72,14 @@ class Post extends React.Component {
 
     axios
       .put(`http://localhost:8080/post/${this.state.post.id}`, {
-        post: this.state.post
+        title: this.state.post.title,
+        content: this.state.post.content,
+        type: this.state.post.type
       })
       .then(res => {
         // here need to fetch again the posts from the webapp
+        console.log(res);
+        console.log(res.data);
         this.props.getPosts();
       });
   };
@@ -89,7 +98,8 @@ class Post extends React.Component {
   }
 }
 
-class NameForm extends React.Component {
+// ---------------------This is is the CreatePostForm---------------------------
+class CreatePostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { title: "", content: "", type: "REGULAR" };
