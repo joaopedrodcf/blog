@@ -56,6 +56,7 @@ class Post extends React.Component {
     super(props);
     // needs to bind every function
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
   }
 
   handleDelete = event => {
@@ -67,6 +68,21 @@ class Post extends React.Component {
     });
   };
 
+  handleUpdate = event => {
+    event.preventDefault();
+
+    axios
+      .put(`http://localhost:8080/post/${this.props.id}`, {
+        title: this.props.title,
+        content: this.props.content,
+        type: this.props.type
+      })
+      .then(res => {
+        // here need to fetch again the posts from the webapp
+        this.props.getPosts();
+      });
+  };
+
   render() {
     return (
       <div>
@@ -75,6 +91,7 @@ class Post extends React.Component {
         <div className="type">{this.props.type}</div>
         <br />
         <button onClick={this.handleDelete}>delete</button>
+        <button onClick={this.handleUpdate}>update</button>
       </div>
     );
   }
@@ -83,7 +100,7 @@ class Post extends React.Component {
 class NameForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", content: "sdsadsad", type: "REGULAR" };
+    this.state = { title: "", content: "", type: "REGULAR" };
 
     // needs to bind every function
     this.handleChange = this.handleChange.bind(this);
