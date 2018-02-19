@@ -16,6 +16,7 @@ class App extends React.Component {
     this.getPosts();
   }
 
+  // CRUD for use in the components
   getPosts() {
     axios.get(`http://localhost:8080/post/`).then(res => {
       const posts = res.data;
@@ -25,149 +26,122 @@ class App extends React.Component {
     });
   }
 
+  deletePost(id) {
+    axios.delete(`http://localhost:8080/post/${id}`).then(res => {
+      // here need to fetch again the posts from the webapp
+      console.log(res);
+      console.log(res.data);
+      this.getPosts();
+    });
+  }
+
+  createPost(post) {
+    axios
+      .post(`http://localhost:8080/post/`, {
+        title: post.title,
+        content: post.content,
+        type: post.type
+      })
+      .then(res => {
+        this.getPosts();
+        console.log(res);
+        console.log(res.data);
+      });
+  }
+
   render() {
     return (
       <div>
         <div>
           The following information is retrieved from the GET ALL REST WEBAPI
         </div>
-        {this.state.posts.map(post => (
-          <Post key={post.id} post={post} getPosts={() => this.getPosts()} />
-        ))}
+        <Posts
+          posts={this.state.posts}
+          deletePost={this.deletePost.bind(this)}
+        />
         <br />
         <div>The next next part will be a form to POST REST WEBAPI</div>
-        <CreatePostForm getPosts={() => this.getPosts()} />
+        <CreatePostForm insertPost={this.createPost.bind(this)} />
       </div>
     );
   }
 }
 
-// ---------------------This is is a single Post Component----------------------
-class Post extends React.Component {
-  constructor(props) {
-    super(props);
-    // needs to bind every function
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
-    this.state = {
-      post: this.props.post
-    };
-  }
-
-  handleDelete = event => {
-    event.preventDefault();
-
-    axios
-      .delete(`http://localhost:8080/post/${this.state.post.id}`)
-      .then(res => {
-        // here need to fetch again the posts from the webapp
-        console.log(res);
-        console.log(res.data);
-        this.props.getPosts();
-      });
-  };
-
-  handleUpdate = event => {
-    event.preventDefault();
-
-    axios
-      .put(`http://localhost:8080/post/${this.state.post.id}`, {
-        title: this.state.post.title,
-        content: this.state.post.content,
-        type: this.state.post.type
-      })
-      .then(res => {
-        // here need to fetch again the posts from the webapp
-        console.log(res);
-        console.log(res.data);
-        this.props.getPosts();
-      });
-  };
-
+class Posts extends React.Component {
   render() {
     return (
       <div>
-        <div className="title">{this.state.post.title}</div>
-        <div className="content">{this.state.post.content}</div>
-        <div className="type">{this.state.post.type}</div>
-        <br />
-        <button onClick={this.handleDelete}>delete</button>
-        <button onClick={this.handleUpdate}>update</button>
+        {this.props.posts.map(post => (
+          <Post key={post.id} post={post} deletePost={this.props.deletePost} />
+        ))}
       </div>
     );
   }
 }
 
-// ---------------------This is is the CreatePostForm---------------------------
+class Post extends React.Component {
+  render() {
+    // For some reason is important the () => , still need to research more
+    return (
+      <div>
+        <span className="title">{this.props.post.title}</span>
+        <span className="content">{this.props.post.content}</span>
+        <span className="type">{this.props.post.type}</span>
+
+        <button onClick={() => this.props.deletePost(this.props.post.id)}>
+          delete
+        </button>
+      </div>
+    );
+  }
+}
+
 class CreatePostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { title: "", content: "", type: "REGULAR" };
-
-    // needs to bind every function
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // the follwing funcions update the state of the variables
+  // Handle changes to the form and update the value in the stage
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
   }
 
-  handleSubmit = event => {
+  handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.title, this.state.content, this.state.type);
-    axios
-      .post(`http://localhost:8080/post/`, {
-        title: this.state.title,
-        content: this.state.content,
-        type: this.state.type
-      })
-      .then(res => {
-        this.props.getPosts();
-        console.log(res);
-        console.log(res.data);
-      });
-  };
+    const post = {
+      title: this.state.title,
+      content: this.state.content,
+      type: this.state.type
+    };
+    this.props.insertPost(post);
+  }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Title:
-          <input
-            type="text"
-            name="title"
-            value={this.state.title}
-            onChange={this.handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Content:
-          <textarea
-            name="content"
-            value={this.state.content}
-            onChange={this.handleChange}
-          />
-        </label>
-        <br />
-        <br />
-        <label>
-          Type:
-          <select
-            name="type"
-            value={this.state.type}
-            onChange={this.handleChange}
-          >
-            <option value="REGULAR">REGULAR</option>
-            <option value="IMPORTANT">IMPORTANT</option>
-            <option value="FLASHNEWS">FLASHNEWS</option>
-          </select>
-        </label>
-        <br />
-        <br />
+        <input
+          type="text"
+          name="title"
+          value={this.state.title}
+          onChange={this.handleChange}
+        />
+        <textarea
+          name="content"
+          value={this.state.content}
+          onChange={this.handleChange}
+        />
+        <select
+          name="type"
+          value={this.state.type}
+          onChange={this.handleChange}
+        >
+          <option value="REGULAR">REGULAR</option>
+          <option value="IMPORTANT">IMPORTANT</option>
+          <option value="FLASHNEWS">FLASHNEWS</option>
+        </select>
         <input type="submit" value="Submit" />
       </form>
     );
