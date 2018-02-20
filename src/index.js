@@ -7,7 +7,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      posts: []
+      posts: [],
+      initialPosts: []
     };
     this.getPosts = this.getPosts.bind(this);
   }
@@ -22,7 +23,7 @@ class App extends React.Component {
       const posts = res.data;
       console.log(res);
       console.log(res.data);
-      this.setState({ posts: posts });
+      this.setState({ posts: posts, initialPosts: posts });
     });
   }
 
@@ -50,9 +51,7 @@ class App extends React.Component {
   }
 
   searchPosts(query) {
-    let posts = this.state.posts.filter(post => {
-      console.log(post.title.includes(query));
-      console.log(post.content.includes(query));
+    let posts = this.state.initialPosts.filter(post => {
       return post.title.includes(query) || post.content.includes(query);
     });
     this.setState({ posts: posts });
