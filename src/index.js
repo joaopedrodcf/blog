@@ -22,7 +22,7 @@ class App extends React.Component {
       const posts = res.data;
       console.log(res);
       console.log(res.data);
-      this.setState({ posts });
+      this.setState({ posts: posts });
     });
   }
 
@@ -49,17 +49,26 @@ class App extends React.Component {
       });
   }
 
+  searchPosts(query) {
+    let posts = this.state.posts.filter(post => {
+      console.log(post.title.includes(query));
+      console.log(post.content.includes(query));
+      return post.title.includes(query) || post.content.includes(query);
+    });
+    this.setState({ posts: posts });
+  }
+
   render() {
     return (
       <div>
-        <div>
-          The following information is retrieved from the GET ALL REST WEBAPI
-        </div>
+        <div>These are all the posts</div>
         <Posts
           posts={this.state.posts}
           deletePost={this.deletePost.bind(this)}
         />
         <br />
+
+        <SearchPosts searchPosts={this.searchPosts.bind(this)} />
         <div>The next next part will be a form to POST REST WEBAPI</div>
         <CreatePostForm insertPost={this.createPost.bind(this)} />
       </div>
@@ -87,7 +96,7 @@ class Post extends React.Component {
         <span className="title">{this.props.post.title}</span>
         <span className="content">{this.props.post.content}</span>
         <span className="type">{this.props.post.type}</span>
-
+        <br />
         <button onClick={() => this.props.deletePost(this.props.post.id)}>
           delete
         </button>
@@ -144,6 +153,20 @@ class CreatePostForm extends React.Component {
         </select>
         <input type="submit" value="Submit" />
       </form>
+    );
+  }
+}
+
+class SearchPosts extends React.Component {
+  handleSearch(event) {
+    this.props.searchPosts(event.target.value);
+  }
+
+  render() {
+    return (
+      <div>
+        <input type="text" onKeyUp={this.handleSearch.bind(this)} />
+      </div>
     );
   }
 }
