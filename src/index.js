@@ -41,7 +41,7 @@ class App extends React.Component {
       .post(`http://localhost:8080/post/`, {
         title: post.title,
         content: post.content,
-        type: post.type
+        type: post.type.type
       })
       .then(res => {
         this.getPosts();
@@ -93,7 +93,9 @@ class Post extends React.Component {
     return (
       <div>
         <span className="title">{this.props.post.title}</span>
+        <br />
         <span className="content">{this.props.post.content}</span>
+        <br />
         <span className="type">{this.props.post.type}</span>
         <br />
         <button onClick={() => this.props.deletePost(this.props.post.id)}>
