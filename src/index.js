@@ -41,7 +41,10 @@ class App extends React.Component {
       .post(`http://localhost:8080/post/`, {
         title: post.title,
         content: post.content,
-        type: post.type.type
+        type: {
+          id: post.type.id,
+          type: post.type.type
+        }
       })
       .then(res => {
         this.getPosts();
@@ -96,7 +99,7 @@ class Post extends React.Component {
         <br />
         <span className="content">{this.props.post.content}</span>
         <br />
-        <span className="type">{this.props.post.type}</span>
+        <span className="type">{this.props.post.type.type}</span>
         <br />
         <button onClick={() => this.props.deletePost(this.props.post.id)}>
           delete
@@ -109,14 +112,31 @@ class Post extends React.Component {
 class CreatePostForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", content: "", type: "REGULAR" };
+    this.state = {
+      title: "",
+      content: "",
+      type: {
+        type: "IMPORTANT"
+      }
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeType = this.handleChangeType.bind(this);
   }
 
   // Handle changes to the form and update the value in the stage
+
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+  }
+
+  // stackoverflow : how-do-i-setstate-for-nested-array
+  handleChangeType(event) {
+    let type = Object.assign({}, this.state.type); //creating copy of object
+    type.type = event.target.value; //updating value
+    this.setState({ type });
   }
 
   handleSubmit(event) {
@@ -124,7 +144,9 @@ class CreatePostForm extends React.Component {
     const post = {
       title: this.state.title,
       content: this.state.content,
-      type: this.state.type
+      type: {
+        type: this.state.type.type
+      }
     };
     this.props.insertPost(post);
   }
@@ -146,10 +168,10 @@ class CreatePostForm extends React.Component {
         <select
           name="type"
           value={this.state.type}
-          onChange={this.handleChange}
+          onChange={this.handleChangeType}
         >
-          <option value="REGULAR">REGULAR</option>
           <option value="IMPORTANT">IMPORTANT</option>
+          <option value="REGULAR">REGULAR</option>
           <option value="FLASHNEWS">FLASHNEWS</option>
         </select>
         <input type="submit" value="Submit" />
