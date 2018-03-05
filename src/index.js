@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import CreatePostForm from './components/CreatePostForm';
+import SearchPosts from './components/SearchPosts';
+import Posts from './components/Posts';
 
 // -------------------------This is the main App--------------------------------
 class App extends React.Component {
@@ -78,120 +81,5 @@ class App extends React.Component {
   }
 }
 
-class Posts extends React.Component {
-  render() {
-    return (
-      <div>
-        {this.props.posts.map(post => (
-          <Post key={post.id} post={post} deletePost={this.props.deletePost} />
-        ))}
-      </div>
-    );
-  }
-}
-
-class Post extends React.Component {
-  render() {
-    // For some reason is important the () => , still need to research more
-    return (
-      <div>
-        <span className="title">{this.props.post.title}</span>
-        <br />
-        <span className="content">{this.props.post.content}</span>
-        <br />
-        <span className="type">{this.props.post.type.type}</span>
-        <br />
-        <button onClick={() => this.props.deletePost(this.props.post.id)}>
-          delete
-        </button>
-      </div>
-    );
-  }
-}
-
-class CreatePostForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "",
-      content: "",
-      type: {
-        type: "IMPORTANT"
-      }
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChangeType = this.handleChangeType.bind(this);
-  }
-
-  // Handle changes to the form and update the value in the stage
-
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
-  // stackoverflow : how-do-i-setstate-for-nested-array
-  handleChangeType(event) {
-    let type = Object.assign({}, this.state.type); //creating copy of object
-    type.type = event.target.value; //updating value
-    this.setState({ type });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const post = {
-      title: this.state.title,
-      content: this.state.content,
-      type: {
-        type: this.state.type.type
-      }
-    };
-    this.props.insertPost(post);
-  }
-
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          value={this.state.title}
-          onChange={this.handleChange}
-        />
-        <textarea
-          name="content"
-          value={this.state.content}
-          onChange={this.handleChange}
-        />
-        <select
-          name="type"
-          value={this.state.type}
-          onChange={this.handleChangeType}
-        >
-          <option value="IMPORTANT">IMPORTANT</option>
-          <option value="REGULAR">REGULAR</option>
-          <option value="FLASHNEWS">FLASHNEWS</option>
-        </select>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-  }
-}
-
-class SearchPosts extends React.Component {
-  handleSearch(event) {
-    this.props.searchPosts(event.target.value);
-  }
-
-  render() {
-    return (
-      <div>
-        <input type="text" onKeyUp={this.handleSearch.bind(this)} />
-      </div>
-    );
-  }
-}
 
 ReactDOM.render(<App />, document.getElementById("root"));
