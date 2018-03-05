@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
-import CreatePostForm from './components/CreatePostForm';
-import SearchPosts from './components/SearchPosts';
-import Posts from './components/Posts';
+import CreatePostForm from "./components/CreatePostForm";
+import SearchPosts from "./components/SearchPosts";
+import Posts from "./components/Posts";
 
 // -------------------------This is the main App--------------------------------
 class App extends React.Component {
@@ -80,6 +80,5 @@ class App extends React.Component {
     );
   }
 }
-
 
 ReactDOM.render(<App />, document.getElementById("root"));

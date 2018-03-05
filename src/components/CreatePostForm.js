@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import axios from "axios";
+import SelectDinamic from "./SelectDinamic";
 
 class CreatePostForm extends React.Component {
   constructor(props) {
@@ -7,13 +9,25 @@ class CreatePostForm extends React.Component {
     this.state = {
       title: "",
       content: "",
-      type: {
-        type: "IMPORTANT"
-      }
+      types: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeType = this.handleChangeType.bind(this);
+    this.getTypes = this.getTypes.bind(this);
+  }
+
+  componentDidMount() {
+    this.getTypes();
+  }
+
+  getTypes() {
+    axios.get(`http://localhost:8080/type/`).then(res => {
+      const types = res.data;
+      console.log(res);
+      console.log(res.data);
+      this.setState({ types: types });
+    });
   }
 
   // Handle changes to the form and update the value in the stage
@@ -57,15 +71,10 @@ class CreatePostForm extends React.Component {
           value={this.state.content}
           onChange={this.handleChange}
         />
-        <select
-          name="type"
-          value={this.state.type}
-          onChange={this.handleChangeType}
-        >
-          <option value="IMPORTANT">IMPORTANT</option>
-          <option value="REGULAR">REGULAR</option>
-          <option value="FLASHNEWS">FLASHNEWS</option>
-        </select>
+        <SelectDinamic
+          types={this.state.types}
+          handleChangeType={this.handleChangeType.bind(this)}
+        />
         <input type="submit" value="Submit" />
       </form>
     );
