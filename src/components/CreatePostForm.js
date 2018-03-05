@@ -9,7 +9,10 @@ class CreatePostForm extends React.Component {
     this.state = {
       title: "",
       content: "",
-      types: []
+      types: [],
+      type: {
+        type: "IMPORTANT"
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
