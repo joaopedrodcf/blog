@@ -66,15 +66,15 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <div>These are all the posts</div>
+        <h5>These are all the posts</h5>
         <Posts
           posts={this.state.posts}
           deletePost={this.deletePost.bind(this)}
         />
         <br />
-
+        <h5>Search:</h5>
         <SearchPosts searchPosts={this.searchPosts.bind(this)} />
-        <div>The next next part will be a form to POST REST WEBAPI</div>
+        <h5>The next next part will be a form to POST REST WEBAPI</h5>
         <CreatePostForm insertPost={this.createPost.bind(this)} />
       </div>
     );
