@@ -1,20 +1,23 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import DeleteButton from "./DeleteButton";
 
 class Post extends React.Component {
   render() {
-    // For some reason is important the () => , still need to research more
+    const id = this.props.post.id;
+    const content = this.props.post.content;
+    const type = this.props.post.type.type;
+    const title = this.props.post.title;
+    const deletePost = this.props.deletePost;
+
     return (
       <div>
-        <span className="title">{this.props.post.title}</span>
+        <span className="title">{title}</span>
         <br />
-        <span className="content">{this.props.post.content}</span>
+        <span className="content">{content}</span>
         <br />
-        <span className="type">{this.props.post.type.type}</span>
+        <span className="type">{type}</span>
         <br />
-        <button onClick={() => this.props.deletePost(this.props.post.id)}>
-          delete
-        </button>
+        <DeleteButton id={id} deletePost={deletePost} />
       </div>
     );
   }

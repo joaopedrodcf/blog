@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import axios from "axios";
 import SelectDinamic from "./SelectDinamic";
 
@@ -9,11 +8,12 @@ class CreatePostForm extends React.Component {
     this.state = {
       title: "",
       content: "",
-      types: [],
       type: {
         type: "IMPORTANT"
-      }
+      },
+      types: []
     };
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeType = this.handleChangeType.bind(this);
@@ -27,8 +27,6 @@ class CreatePostForm extends React.Component {
   getTypes() {
     axios.get(`http://localhost:8080/type/`).then(res => {
       const types = res.data;
-      console.log(res);
-      console.log(res.data);
       this.setState({ types: types });
     });
   }
@@ -49,6 +47,7 @@ class CreatePostForm extends React.Component {
   }
 
   handleSubmit(event) {
+    const insertPost = this.props.insertPost;
     event.preventDefault();
     const post = {
       title: this.state.title,
@@ -57,7 +56,7 @@ class CreatePostForm extends React.Component {
         type: this.state.type.type
       }
     };
-    this.props.insertPost(post);
+    insertPost(post);
   }
 
   render() {

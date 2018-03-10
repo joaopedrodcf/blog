@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 // this is a way of importing the components from the module
 import { NavLink, Switch, Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";

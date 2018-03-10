@@ -1,18 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 class SelectDinamic extends React.Component {
   render() {
+    const types = this.props.types;
+    const handleChangeType = this.props.handleChangeType;
+
     return (
-      <div>
-        <select name="type" onChange={this.props.handleChangeType}>
-          {this.props.types.map(type => (
-            <option key={type.id} value={type.type}>
-              {type.type}
-            </option>
-          ))}
-        </select>
-      </div>
+      <select name="type" onChange={handleChangeType}>
+        {types.map(type => (
+          <option key={type.id} value={type.type}>
+            {type.type}
+          </option>
+        ))}
+      </select>
     );
   }
 }
