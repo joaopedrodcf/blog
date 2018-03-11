@@ -39,3 +39,7 @@ You need to install Node.js
 ## Images
 
 * [unsplash](https://unsplash.com/)
+
+## For future use
+
+* [twbscolor](https://work.smarchal.com/twbscolor/) - Generate your own Bootstrap navbar

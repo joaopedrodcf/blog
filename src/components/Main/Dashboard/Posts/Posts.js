@@ -10,7 +10,7 @@ export default class Posts extends React.Component {
     return (
       <Row>
         {posts.map(post => (
-          <Col key={post.id} sm="2" md={{ size: 2, moffset: 1 }}>
+          <Col key={post.id} sm="2">
             <Post post={post} deletePost={deletePost} />
           </Col>
         ))}
