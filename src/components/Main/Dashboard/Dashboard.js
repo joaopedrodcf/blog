@@ -3,7 +3,7 @@ import axios from "axios";
 import CreatePostForm from "./CreatePostForm";
 import SearchPosts from "./SearchPosts";
 import Posts from "./Posts";
-
+import { Row, Col } from "reactstrap";
 // -------------------------This is the main App--------------------------------
 class Dashboard extends React.Component {
   constructor(props) {
@@ -65,16 +65,27 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div>
-        <h5>These are all the posts</h5>
+        <Row>
+          <Col sm="12" md={{ size: 8, offset: 2 }}>
+            <h5>These are all the posts</h5>
+          </Col>
+        </Row>
         <Posts
           posts={this.state.posts}
           deletePost={this.deletePost.bind(this)}
         />
         <br />
-        <h5>Search:</h5>
-        <SearchPosts searchPosts={this.searchPosts.bind(this)} />
-        <h5>The next next part will be a form to POST REST WEBAPI</h5>
-        <CreatePostForm insertPost={this.createPost.bind(this)} />
+        <Row>
+          <Col sm="12" md={{ size: 8, offset: 2 }}>
+            <SearchPosts searchPosts={this.searchPosts.bind(this)} />
+          </Col>
+        </Row>
+        <br />
+        <Row>
+          <Col sm="12" md={{ size: 8, offset: 2 }}>
+            <CreatePostForm insertPost={this.createPost.bind(this)} />
+          </Col>
+        </Row>
       </div>
     );
   }

@@ -1,13 +1,16 @@
 import React from "react";
+import { Button } from "reactstrap";
 
 class DeleteButton extends React.Component {
   render() {
-    const id =this.props.id
+    const id = this.props.id;
     // For some reason is important the () => , still need to research more
     return (
-        <button onClick={() => this.props.deletePost(id)}>
-          delete
-        </button>
+      <div>
+        <Button color="danger" onClick={() => this.props.deletePost(id)}>
+          Delete
+        </Button>
+      </div>
     );
   }
 }

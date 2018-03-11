@@ -34,3 +34,4 @@ You need to install Node.js
 * [npm](https://github.com/npm/npm) - Package manager for javascript
 * [react](https://github.com/facebook/react) - A declarative, efficient, and flexible JavaScript library for building user interfaces
 * [react-router](https://github.com/ReactTraining/react-router) - Declarative routing for React
+* [reactstrap](https://github.com/reactstrap/reactstrap) - Simple React Bootstrap 4 components

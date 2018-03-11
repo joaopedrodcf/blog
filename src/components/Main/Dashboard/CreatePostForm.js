@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import SelectDinamic from "./SelectDinamic";
+import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
 class CreatePostForm extends React.Component {
   constructor(props) {
@@ -34,8 +35,11 @@ class CreatePostForm extends React.Component {
   // Handle changes to the form and update the value in the stage
 
   handleChange(event) {
+    const value = event.target.value;
+    const name = event.target.name;
+
     this.setState({
-      [event.target.name]: event.target.value
+      [name]: value
     });
   }
 
@@ -61,24 +65,37 @@ class CreatePostForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          name="title"
-          value={this.state.title}
-          onChange={this.handleChange}
-        />
-        <textarea
-          name="content"
-          value={this.state.content}
-          onChange={this.handleChange}
-        />
-        <SelectDinamic
-          types={this.state.types}
-          handleChangeType={this.handleChangeType.bind(this)}
-        />
-        <input type="submit" value="Submit" />
-      </form>
+      <Form onSubmit={this.handleSubmit}>
+        <h5>The next next part will be a form to POST REST WEBAPI</h5>
+        <FormGroup>
+          <Label>Title</Label>
+          <Input
+            type="text"
+            name="title"
+            value={this.state.title}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Content</Label>
+          <Input
+            type="textarea"
+            name="content"
+            value={this.state.content}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Type</Label>
+          <SelectDinamic
+            types={this.state.types}
+            handleChangeType={this.handleChangeType.bind(this)}
+          />
+        </FormGroup>
+        <Button type="submit" value="Submit">
+          Submit
+        </Button>
+      </Form>
     );
   }
 }
