@@ -6,10 +6,9 @@ import {
   CardText,
   CardBody,
   CardTitle,
-  CardSubtitle,
   Badge
 } from "reactstrap";
-class Post extends React.Component {
+export default class Post extends React.Component {
   render() {
     const id = this.props.post.id;
     const content = this.props.post.content;
@@ -22,7 +21,7 @@ class Post extends React.Component {
         <CardImg
           top
           width="100%"
-          src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+          src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b80e0951bab298682fc1b12f6d220db4&auto=format&fit=crop&w=1950&q=80"
           alt="Card image cap"
         />
         <CardBody>
@@ -35,5 +34,3 @@ class Post extends React.Component {
     );
   }
 }
-
-export default Post;

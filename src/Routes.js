@@ -4,7 +4,15 @@ import { NavLink as RRNavLink, Switch, Route } from "react-router-dom";
 import Contacts from "./components/Main/Contacts/Contacts";
 import Dashboard from "./components/Main/Dashboard/Dashboard";
 import Home from "./components/Main/Home/Home";
-import { Nav, NavLink, Container } from "reactstrap";
+import {
+  NavbarBrand,
+  Navbar,
+  Nav,
+  NavLink,
+  NavbarToggler,
+  Collapse,
+  NavItem
+} from "reactstrap";
 
 const Main = () => (
   <Switch>
@@ -17,25 +25,57 @@ const Main = () => (
 // Solution of router and reactstrap found on
 // https://github.com/reactstrap/reactstrap/issues/336
 // tag is used to pass an component
-const Header = () => (
-  <Nav>
-    <NavLink to="/" tag={RRNavLink}>
-      Home
-    </NavLink>
-    <NavLink to="/dashboard" tag={RRNavLink}>
-      Dashboard
-    </NavLink>
-    <NavLink to="/contacts" tag={RRNavLink}>
-      Contacts
-    </NavLink>
-  </Nav>
-);
+class Header extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggle = this.toggle.bind(this);
+
+    this.state = {
+      isOpen: false
+    };
+  }
+
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
+
+  render() {
+    return (
+      <Navbar color="dark" dark expand="md">
+        <NavbarBrand>Blog</NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink to="/" tag={RRNavLink}>
+                Home
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/dashboard" tag={RRNavLink}>
+                Dashboard
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink to="/contacts" tag={RRNavLink}>
+                Contacts
+              </NavLink>
+            </NavItem>
+          </Nav>
+        </Collapse>
+      </Navbar>
+    );
+  }
+}
 
 const Routes = () => (
-  <Container fluid>
+  <div>
     <Header />
     <Main />
-  </Container>
+  </div>
 );
 
 export default Routes;

@@ -1,10 +1,11 @@
 import React from "react";
+import { Container } from "reactstrap";
 
 const Contacts = () => (
-  <div>
+  <Container fluid>
     <h1>This is are my contacts</h1>
     <a href="https://github.com/joaopedrodcf">Github page</a>
-  </div>
+  </Container>
 );
 
 export default Contacts;

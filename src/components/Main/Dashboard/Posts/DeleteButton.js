@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "reactstrap";
 
-class DeleteButton extends React.Component {
+export default class DeleteButton extends React.Component {
   render() {
     const id = this.props.id;
     // For some reason is important the () => , still need to research more
@@ -14,4 +14,3 @@ class DeleteButton extends React.Component {
     );
   }
 }
-export default DeleteButton;

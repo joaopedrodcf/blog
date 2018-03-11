@@ -1,7 +1,7 @@
 import React from "react";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Form, FormGroup, Label, Input } from "reactstrap";
 
-class SearchPosts extends React.Component {
+export default class SearchPosts extends React.Component {
   handleSearch(event) {
     this.props.searchPosts(event.target.value);
   }
@@ -10,12 +10,10 @@ class SearchPosts extends React.Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormGroup>
-          <h5>Search:</h5>
+          <Label>Search:</Label>
           <Input type="text" onKeyUp={this.handleSearch.bind(this)} />
         </FormGroup>
       </Form>
     );
   }
 }
-
-export default SearchPosts;

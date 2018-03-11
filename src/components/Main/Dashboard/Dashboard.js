@@ -1,18 +1,20 @@
 import React from "react";
 import axios from "axios";
-import CreatePostForm from "./CreatePostForm";
-import SearchPosts from "./SearchPosts";
-import Posts from "./Posts";
-import { Row, Col } from "reactstrap";
+import CreatePostForm from "./CreatePostForm/CreatePostForm";
+import SearchPosts from "./SearchPosts/SearchPosts";
+import Posts from "./Posts/Posts";
+import { Row, Col, Container } from "reactstrap";
 // -------------------------This is the main App--------------------------------
-class Dashboard extends React.Component {
+export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+
+    this.getPosts = this.getPosts.bind(this);
+
     this.state = {
       posts: [],
       initialPosts: []
     };
-    this.getPosts = this.getPosts.bind(this);
   }
 
   componentDidMount() {
@@ -64,7 +66,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container fluid>
         <Row>
           <Col sm="12" md={{ size: 8, offset: 2 }}>
             <h5>These are all the posts</h5>
@@ -86,9 +88,7 @@ class Dashboard extends React.Component {
             <CreatePostForm insertPost={this.createPost.bind(this)} />
           </Col>
         </Row>
-      </div>
+      </Container>
     );
   }
 }
-
-export default Dashboard;

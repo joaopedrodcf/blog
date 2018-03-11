@@ -1,18 +1,13 @@
 import React from "react";
 import { Input } from "reactstrap";
 
-class SelectDinamic extends React.Component {
+export default class SelectDinamic extends React.Component {
   render() {
     const types = this.props.types;
     const handleChangeType = this.props.handleChangeType;
 
     return (
-      <Input
-        type="select"
-        name="select"
-        name="type"
-        onChange={handleChangeType}
-      >
+      <Input type="select" name="type" onChange={handleChangeType}>
         {types.map(type => (
           <option key={type.id} value={type.type}>
             {type.type}
@@ -22,5 +17,3 @@ class SelectDinamic extends React.Component {
     );
   }
 }
-
-export default SelectDinamic;

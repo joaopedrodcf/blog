@@ -1,10 +1,11 @@
 import React from "react";
+import { Container } from "reactstrap";
 
 const Home = () => (
-  <div>
+  <Container fluid>
     <h1>This is my blog homepage</h1>
     <p>Needs to be updated....</p>
-  </div>
+  </Container>
 );
 
 export default Home;

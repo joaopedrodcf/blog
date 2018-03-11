@@ -1,11 +1,17 @@
 import React from "react";
 import axios from "axios";
 import SelectDinamic from "./SelectDinamic";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-class CreatePostForm extends React.Component {
+export default class CreatePostForm extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChangeType = this.handleChangeType.bind(this);
+    this.getTypes = this.getTypes.bind(this);
+
     this.state = {
       title: "",
       content: "",
@@ -14,11 +20,6 @@ class CreatePostForm extends React.Component {
       },
       types: []
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChangeType = this.handleChangeType.bind(this);
-    this.getTypes = this.getTypes.bind(this);
   }
 
   componentDidMount() {
@@ -99,5 +100,3 @@ class CreatePostForm extends React.Component {
     );
   }
 }
-
-export default CreatePostForm;
