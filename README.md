@@ -7,7 +7,7 @@ A blog site using a REST API to get info from the server
 First just
 
 ```
-git clone
+git clone https://github.com/joaopedrodcf/blog.git
 ```
 
 Then

@@ -1,26 +1,54 @@
 import React from "react";
-import axios from "axios";
-import SelectDinamic from "./SelectDinamic";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-export default class CreatePostForm extends React.Component {
+export default class CreateType extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.state = {
+      name: ""
+    };
   }
+
+  handleSubmit(event) {
+    const insertType = this.props.insertType;
+    event.preventDefault();
+
+    const type = {
+      name: this.state.name
+    };
+
+    console.log(type);
+    insertType(type);
+  }
+
+  handleChange(event) {
+    const value = event.target.value;
+    const name = event.target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
         <FormGroup>
-          <Label>Title</Label>
+          <Label>Type</Label>
           <Input
             type="text"
-            name="type"
-            value={this.state.type}
+            name="name"
+            value={this.state.name}
             onChange={this.handleChange}
           />
         </FormGroup>
+        <Button type="submit" value="Submit">
+          Submit
+        </Button>
       </Form>
     );
   }

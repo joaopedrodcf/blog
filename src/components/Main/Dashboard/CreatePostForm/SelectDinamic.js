@@ -9,8 +9,8 @@ export default class SelectDinamic extends React.Component {
     return (
       <Input type="select" name="type" onChange={handleChangeType}>
         {types.map(type => (
-          <option key={type.id} value={type.type}>
-            {type.type}
+          <option key={type.id} value={type.name}>
+            {type.name}
           </option>
         ))}
       </Input>

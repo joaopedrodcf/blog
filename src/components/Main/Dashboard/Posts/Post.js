@@ -12,7 +12,7 @@ export default class Post extends React.Component {
   render() {
     const id = this.props.post.id;
     const content = this.props.post.content;
-    const type = this.props.post.type.type;
+    const type = this.props.post.type.name;
     const title = this.props.post.title;
     const deletePost = this.props.deletePost;
 

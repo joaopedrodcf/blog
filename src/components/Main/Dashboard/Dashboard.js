@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import CreatePostForm from "./CreatePostForm/CreatePostForm";
 import SearchPosts from "./SearchPosts/SearchPosts";
+import CreateType from "./CreateType/CreateType";
 import Posts from "./Posts/Posts";
 import { Row, Col, Container } from "reactstrap";
 // -------------------------This is the main App--------------------------------
@@ -25,8 +26,7 @@ export default class Dashboard extends React.Component {
   getPosts() {
     axios.get(`http://localhost:8080/post/`).then(res => {
       const posts = res.data;
-      console.log(res);
-      console.log(res.data);
+      console.log(posts);
       this.setState({ posts: posts, initialPosts: posts });
     });
   }
@@ -34,8 +34,6 @@ export default class Dashboard extends React.Component {
   deletePost(id) {
     axios.delete(`http://localhost:8080/post/${id}`).then(res => {
       // here need to fetch again the posts from the webapp
-      console.log(res);
-      console.log(res.data);
       this.getPosts();
     });
   }
@@ -47,11 +45,21 @@ export default class Dashboard extends React.Component {
         content: post.content,
         type: {
           id: post.type.id,
-          type: post.type.type
+          name: post.type.name
         }
       })
       .then(res => {
         this.getPosts();
+      });
+  }
+
+  createType(type) {
+    console.log(type);
+    axios
+      .post(`http://localhost:8080/type/`, {
+        name: type.name
+      })
+      .then(res => {
         console.log(res);
         console.log(res.data);
       });
@@ -59,7 +67,14 @@ export default class Dashboard extends React.Component {
 
   searchPosts(query) {
     let posts = this.state.initialPosts.filter(post => {
-      return post.title.includes(query) || post.content.includes(query);
+      const queryInsensitive = query.toLowerCase();
+      const postTitleInsensitive = post.title.toLowerCase();
+      const postContentInsensitive = post.content.toLowerCase();
+
+      return (
+        postTitleInsensitive.includes(queryInsensitive) ||
+        postContentInsensitive.includes(queryInsensitive)
+      );
     });
     this.setState({ posts: posts });
   }
@@ -79,16 +94,15 @@ export default class Dashboard extends React.Component {
               posts={this.state.posts}
               deletePost={this.deletePost.bind(this)}
             />
-            <br />
-
-            <br />
             <Row>
               <Col sm="12">
                 <CreatePostForm insertPost={this.createPost.bind(this)} />
               </Col>
             </Row>
+            <Row>
+              <CreateType insertType={this.createType.bind(this)} />
+            </Row>
           </Col>
-
           <Col sm="2">
             <Row>
               <Col>

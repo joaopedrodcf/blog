@@ -16,7 +16,7 @@ export default class CreatePostForm extends React.Component {
       title: "",
       content: "",
       type: {
-        type: "IMPORTANT"
+        name: "IMPORTANT"
       },
       types: []
     };
@@ -46,8 +46,8 @@ export default class CreatePostForm extends React.Component {
 
   // stackoverflow : how-do-i-setstate-for-nested-array
   handleChangeType(event) {
-    let type = Object.assign({}, this.state.type); //creating copy of object
-    type.type = event.target.value; //updating value
+    let type = Object.assign({}, this.state.name); //creating copy of object
+    type.name = event.target.value; //updating value
     this.setState({ type });
   }
 
@@ -58,9 +58,10 @@ export default class CreatePostForm extends React.Component {
       title: this.state.title,
       content: this.state.content,
       type: {
-        type: this.state.type.type
+        name: this.state.type.name
       }
     };
+    console.log(post);
     insertPost(post);
   }
 
