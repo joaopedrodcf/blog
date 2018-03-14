@@ -4,7 +4,7 @@ import CreatePostForm from "./CreatePostForm/CreatePostForm";
 import SearchPosts from "./SearchPosts/SearchPosts";
 import CreateType from "./CreateType/CreateType";
 import Posts from "./Posts/Posts";
-import { Row, Col, Container } from "reactstrap";
+import { Row, Col, Container, Alert } from "reactstrap";
 // -------------------------This is the main App--------------------------------
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -15,7 +15,8 @@ export default class Dashboard extends React.Component {
     this.state = {
       posts: [],
       initialPosts: [],
-      types: []
+      types: [],
+      createdPost: false
     };
   }
 
@@ -59,6 +60,7 @@ export default class Dashboard extends React.Component {
       })
       .then(res => {
         this.getPosts();
+        this.setState({ createdPost: true });
       });
   }
 
@@ -88,6 +90,11 @@ export default class Dashboard extends React.Component {
   }
 
   render() {
+    let alert = null;
+    if (this.state.createdPost) {
+      alert = <Alert color="success">A post was created!</Alert>;
+    }
+
     return (
       <Container fluid>
         <Row>
@@ -108,6 +115,7 @@ export default class Dashboard extends React.Component {
                   types={this.state.types}
                   insertPost={this.createPost.bind(this)}
                 />
+                {alert}
               </Col>
             </Row>
             <Row>

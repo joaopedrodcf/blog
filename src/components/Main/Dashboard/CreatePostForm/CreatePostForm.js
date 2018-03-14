@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import SelectTypes from "./SelectTypes";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
