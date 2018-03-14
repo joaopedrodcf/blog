@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import SelectDinamic from "./SelectDinamic";
+import SelectTypes from "./SelectTypes";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
 export default class CreatePostForm extends React.Component {
@@ -10,27 +10,14 @@ export default class CreatePostForm extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChangeType = this.handleChangeType.bind(this);
-    this.getTypes = this.getTypes.bind(this);
 
     this.state = {
       title: "",
       content: "",
       type: {
         name: "IMPORTANT"
-      },
-      types: []
+      }
     };
-  }
-
-  componentDidMount() {
-    this.getTypes();
-  }
-
-  getTypes() {
-    axios.get(`http://localhost:8080/type/`).then(res => {
-      const types = res.data;
-      this.setState({ types: types });
-    });
   }
 
   // Handle changes to the form and update the value in the stage
@@ -66,9 +53,10 @@ export default class CreatePostForm extends React.Component {
   }
 
   render() {
+    const types = this.props.types;
     return (
       <Form onSubmit={this.handleSubmit}>
-        <h5>The next next part will be a form to POST REST WEBAPI</h5>
+        <h5>Create new posts</h5>
         <FormGroup>
           <Label>Title</Label>
           <Input
@@ -89,8 +77,8 @@ export default class CreatePostForm extends React.Component {
         </FormGroup>
         <FormGroup>
           <Label>Type</Label>
-          <SelectDinamic
-            types={this.state.types}
+          <SelectTypes
+            types={types}
             handleChangeType={this.handleChangeType.bind(this)}
           />
         </FormGroup>

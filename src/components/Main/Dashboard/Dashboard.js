@@ -14,12 +14,14 @@ export default class Dashboard extends React.Component {
 
     this.state = {
       posts: [],
-      initialPosts: []
+      initialPosts: [],
+      types: []
     };
   }
 
   componentDidMount() {
     this.getPosts();
+    this.getTypes();
   }
 
   // CRUD for use in the components
@@ -28,6 +30,13 @@ export default class Dashboard extends React.Component {
       const posts = res.data;
       console.log(posts);
       this.setState({ posts: posts, initialPosts: posts });
+    });
+  }
+
+  getTypes() {
+    axios.get(`http://localhost:8080/type/`).then(res => {
+      const types = res.data;
+      this.setState({ types: types });
     });
   }
 
@@ -60,8 +69,7 @@ export default class Dashboard extends React.Component {
         name: type.name
       })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        this.getTypes();
       });
   }
 
@@ -96,11 +104,16 @@ export default class Dashboard extends React.Component {
             />
             <Row>
               <Col sm="12">
-                <CreatePostForm insertPost={this.createPost.bind(this)} />
+                <CreatePostForm
+                  types={this.state.types}
+                  insertPost={this.createPost.bind(this)}
+                />
               </Col>
             </Row>
             <Row>
-              <CreateType insertType={this.createType.bind(this)} />
+              <Col sm="12">
+                <CreateType insertType={this.createType.bind(this)} />
+              </Col>
             </Row>
           </Col>
           <Col sm="2">

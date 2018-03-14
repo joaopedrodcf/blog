@@ -1,7 +1,7 @@
 import React from "react";
 import { Input } from "reactstrap";
 
-export default class SelectDinamic extends React.Component {
+export default class SelectTypes extends React.Component {
   render() {
     const types = this.props.types;
     const handleChangeType = this.props.handleChangeType;
