@@ -47,6 +47,12 @@ export default class CreatePostForm extends React.Component {
         name: this.state.type.name
       }
     };
+
+    this.setState({
+      title: "",
+      content: ""
+    });
+
     console.log(post);
     insertPost(post);
   }

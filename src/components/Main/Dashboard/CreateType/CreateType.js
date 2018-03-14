@@ -21,6 +21,9 @@ export default class CreateType extends React.Component {
       name: this.state.name
     };
 
+    this.setState({
+      name: ""
+    });
     console.log(type);
     insertType(type);
   }

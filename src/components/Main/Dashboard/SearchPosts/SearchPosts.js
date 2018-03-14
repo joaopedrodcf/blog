@@ -9,6 +9,7 @@ export default class SearchPosts extends React.Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
+        <h5>Filter Posts</h5>
         <FormGroup>
           <Label>Search:</Label>
           <Input type="text" onKeyUp={this.handleSearch.bind(this)} />

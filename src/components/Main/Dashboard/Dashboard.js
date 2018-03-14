@@ -117,7 +117,7 @@ export default class Dashboard extends React.Component {
           <Col sm="8">
             <Row>
               <Col sm="12">
-                <h5>These are all the posts</h5>
+                <h5>All Posts</h5>
               </Col>
             </Row>
             <Posts
