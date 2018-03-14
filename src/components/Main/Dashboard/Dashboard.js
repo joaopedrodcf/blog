@@ -98,17 +98,7 @@ export default class Dashboard extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col sm="2">This is the sidebar</Col>
-          <Col sm="8">
-            <Row>
-              <Col sm="12">
-                <h5>These are all the posts</h5>
-              </Col>
-            </Row>
-            <Posts
-              posts={this.state.posts}
-              deletePost={this.deletePost.bind(this)}
-            />
+          <Col sm="2">
             <Row>
               <Col sm="12">
                 <CreatePostForm
@@ -123,6 +113,17 @@ export default class Dashboard extends React.Component {
                 <CreateType insertType={this.createType.bind(this)} />
               </Col>
             </Row>
+          </Col>
+          <Col sm="8">
+            <Row>
+              <Col sm="12">
+                <h5>These are all the posts</h5>
+              </Col>
+            </Row>
+            <Posts
+              posts={this.state.posts}
+              deletePost={this.deletePost.bind(this)}
+            />
           </Col>
           <Col sm="2">
             <Row>
