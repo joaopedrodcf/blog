@@ -13,6 +13,7 @@ export default class CreatePostForm extends React.Component {
     this.state = {
       title: "",
       content: "",
+      image: "",
       type: {
         name: "IMPORTANT"
       }
@@ -43,6 +44,7 @@ export default class CreatePostForm extends React.Component {
     const post = {
       title: this.state.title,
       content: this.state.content,
+      image: this.state.image,
       type: {
         name: this.state.type.name
       }
@@ -50,7 +52,8 @@ export default class CreatePostForm extends React.Component {
 
     this.setState({
       title: "",
-      content: ""
+      content: "",
+      image: ""
     });
 
     console.log(post);
@@ -77,6 +80,15 @@ export default class CreatePostForm extends React.Component {
             type="textarea"
             name="content"
             value={this.state.content}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Image url</Label>
+          <Input
+            type="text"
+            name="image"
+            value={this.state.image}
             onChange={this.handleChange}
           />
         </FormGroup>

@@ -53,6 +53,7 @@ export default class Dashboard extends React.Component {
       .post(`http://localhost:8080/post/`, {
         title: post.title,
         content: post.content,
+        image: post.image,
         type: {
           id: post.type.id,
           name: post.type.name

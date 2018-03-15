@@ -14,16 +14,12 @@ export default class Post extends React.Component {
     const content = this.props.post.content;
     const type = this.props.post.type.name;
     const title = this.props.post.title;
+    const image = this.props.post.image;
     const deletePost = this.props.deletePost;
 
     return (
       <Card>
-        <CardImg
-          top
-          width="100%"
-          src="https://images.unsplash.com/photo-1478436127897-769e1b3f0f36?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b80e0951bab298682fc1b12f6d220db4&auto=format&fit=crop&w=1950&q=80"
-          alt="Card image cap"
-        />
+        <CardImg top width="100%" src={image} alt="Card image cap" />
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardText>{content}</CardText>
