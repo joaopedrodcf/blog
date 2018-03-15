@@ -80,10 +80,11 @@ export default class Dashboard extends React.Component {
       const queryInsensitive = query.toLowerCase();
       const postTitleInsensitive = post.title.toLowerCase();
       const postContentInsensitive = post.content.toLowerCase();
-
+      const postTypeInsensitive = post.type.name.toLowerCase();
       return (
         postTitleInsensitive.includes(queryInsensitive) ||
-        postContentInsensitive.includes(queryInsensitive)
+        postContentInsensitive.includes(queryInsensitive) ||
+        postTypeInsensitive.includes(queryInsensitive)
       );
     });
     this.setState({ posts: posts });
@@ -128,7 +129,10 @@ export default class Dashboard extends React.Component {
           <Col sm="2">
             <Row>
               <Col>
-                <SearchPosts searchPosts={this.searchPosts.bind(this)} />
+                <SearchPosts
+                  types={this.state.types}
+                  searchPosts={this.searchPosts.bind(this)}
+                />
               </Col>
             </Row>
           </Col>

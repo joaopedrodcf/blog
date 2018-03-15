@@ -7,6 +7,7 @@ export default class SearchPosts extends React.Component {
   }
 
   render() {
+    const types = this.props.types;
     return (
       <Form onSubmit={this.handleSubmit}>
         <h5>Filter Posts</h5>
@@ -14,6 +15,18 @@ export default class SearchPosts extends React.Component {
           <Label>Search:</Label>
           <Input type="text" onKeyUp={this.handleSearch.bind(this)} />
         </FormGroup>
+        {types.map(type => (
+          <FormGroup check key={type.id}>
+            <Label check>
+              <Input
+                type="checkbox"
+                value={type.name}
+                onChange={this.handleSearch.bind(this)}
+              />
+              {type.name}
+            </Label>
+          </FormGroup>
+        ))}
       </Form>
     );
   }
