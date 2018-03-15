@@ -40,6 +40,10 @@ You need to install Node.js
 
 * [unsplash](https://unsplash.com/)
 
+## Fonts
+
+* [google-fonts](https://fonts.google.com)
+
 ## For future use
 
 * [twbscolor](https://work.smarchal.com/twbscolor/) - Generate your own Bootstrap navbar
