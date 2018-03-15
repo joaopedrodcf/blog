@@ -35,15 +35,7 @@ You need to install Node.js
 * [react](https://github.com/facebook/react) - A declarative, efficient, and flexible JavaScript library for building user interfaces
 * [react-router](https://github.com/ReactTraining/react-router) - Declarative routing for React
 * [reactstrap](https://github.com/reactstrap/reactstrap) - Simple React Bootstrap 4 components
-
-## Images
-
-* [unsplash](https://unsplash.com/)
-
-## Fonts
-
-* [google-fonts](https://fonts.google.com)
-
-## For future use
-
+* [font-awesome](https://github.com/FortAwesome/Font-Awesome) - The iconic SVG, font, and CSS toolkit
 * [twbscolor](https://work.smarchal.com/twbscolor/) - Generate your own Bootstrap navbar
+* [google-fonts](https://github.com/google/fonts) - Font files available from Google Fonts
+* [unsplash](https://unsplash.com/) - Free images without copyright
