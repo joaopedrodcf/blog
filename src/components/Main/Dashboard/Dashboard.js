@@ -1,9 +1,10 @@
-import React from "react";
-import axios from "axios";
-import SearchPosts from "./SearchPosts/SearchPosts";
 import Posts from "./Posts/Posts";
-import { Row, Col, Container } from "reactstrap";
+import SearchPosts from "./SearchPosts/SearchPosts";
 import SidebarRight from "./SidebarRight";
+
+import axios from "axios";
+import React from "react";
+import { Col, Container, Row } from "reactstrap";
 
 // -------------------------This is the main App--------------------------------
 export default class Dashboard extends React.Component {

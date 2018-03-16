@@ -1,7 +1,8 @@
-import React from "react";
-import { Container as ContainerBootstrap, Row, Col } from "reactstrap";
 import Container from "./Container";
 import Sidebar from "./Sidebar";
+
+import React from "react";
+import { Col, Container as ContainerBootstrap, Row } from "reactstrap";
 
 const Contacts = () => (
   <ContainerBootstrap fluid>

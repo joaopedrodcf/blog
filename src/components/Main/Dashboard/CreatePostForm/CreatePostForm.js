@@ -1,6 +1,6 @@
-import React from "react";
 import SelectTypes from "./SelectTypes";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import React from "react";
+import { Button, Form, FormGroup, Input, Label } from "reactstrap";
 
 export default class CreatePostForm extends React.Component {
   constructor(props) {

@@ -1,13 +1,14 @@
-import React from "react";
 import DeleteButton from "./DeleteButton";
+import React from "react";
 import {
+  Badge,
   Card,
+  CardBody,
   CardImg,
   CardText,
-  CardBody,
-  CardTitle,
-  Badge
+  CardTitle
 } from "reactstrap";
+
 export default class Post extends React.Component {
   render() {
     const id = this.props.post.id;
