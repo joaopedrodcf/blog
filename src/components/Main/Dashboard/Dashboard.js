@@ -1,10 +1,10 @@
 import React from "react";
 import axios from "axios";
-import CreatePostForm from "./CreatePostForm/CreatePostForm";
 import SearchPosts from "./SearchPosts/SearchPosts";
-import CreateType from "./CreateType/CreateType";
 import Posts from "./Posts/Posts";
-import { Row, Col, Container, Alert } from "reactstrap";
+import { Row, Col, Container } from "reactstrap";
+import SidebarRight from "./SidebarRight";
+
 // -------------------------This is the main App--------------------------------
 export default class Dashboard extends React.Component {
   constructor(props) {
@@ -15,8 +15,7 @@ export default class Dashboard extends React.Component {
     this.state = {
       posts: [],
       initialPosts: [],
-      types: [],
-      createdPost: false
+      types: []
     };
   }
 
@@ -61,7 +60,6 @@ export default class Dashboard extends React.Component {
       })
       .then(res => {
         this.getPosts();
-        this.setState({ createdPost: true });
       });
   }
 
@@ -92,29 +90,15 @@ export default class Dashboard extends React.Component {
   }
 
   render() {
-    let alert = null;
-    if (this.state.createdPost) {
-      alert = <Alert color="success">A post was created!</Alert>;
-    }
-
     return (
       <Container fluid>
         <Row>
           <Col sm="2">
-            <Row>
-              <Col sm="12">
-                <CreatePostForm
-                  types={this.state.types}
-                  insertPost={this.createPost.bind(this)}
-                />
-                {alert}
-              </Col>
-            </Row>
-            <Row>
-              <Col sm="12">
-                <CreateType insertType={this.createType.bind(this)} />
-              </Col>
-            </Row>
+            <SidebarRight
+              types={this.state.types}
+              insertPost={this.createPost.bind(this)}
+              insertType={this.createType.bind(this)}
+            />
           </Col>
           <Col sm="8">
             <Row>

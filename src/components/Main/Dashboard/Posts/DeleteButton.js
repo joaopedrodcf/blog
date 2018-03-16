@@ -8,7 +8,7 @@ export default class DeleteButton extends React.Component {
     return (
       <div>
         <Button color="danger" onClick={() => this.props.deletePost(id)}>
-          <i class="fas fa-trash" />Delete
+          <i className="fas fa-trash" />Delete
         </Button>
       </div>
     );

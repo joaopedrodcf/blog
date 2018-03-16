@@ -1,24 +1,20 @@
 import React from "react";
-import { Container, Row, Col } from "reactstrap";
+import { Container as ContainerBootstrap, Row, Col } from "reactstrap";
+import Container from "./Container";
+import Sidebar from "./Sidebar";
 
 const Contacts = () => (
-  <Container fluid>
+  <ContainerBootstrap fluid>
     <Row>
-      <Col sm="2">This is the sidebar</Col>
-      <Col sm="10">
-        <h1>This is are my contacts</h1>
-        <Row>
-          <i class="fab fa-github" />
-          <a href="https://github.com/joaopedrodcf">Github page</a>
-        </Row>
-
-        <Row>
-          <i class="fab fa-linkedin" />
-          <a href="https://www.linkedin.com/in/joaoferr93/">Linkedin page</a>
-        </Row>
+      <Col sm="2">
+        <Sidebar />
       </Col>
+      <Col sm="10">
+        <Container />
+      </Col>
+      <Col sm="2" />
     </Row>
-  </Container>
+  </ContainerBootstrap>
 );
 
 export default Contacts;
