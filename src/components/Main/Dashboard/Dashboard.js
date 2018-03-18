@@ -29,7 +29,6 @@ export default class Dashboard extends React.Component {
   getPosts() {
     axios.get(`http://localhost:8080/post/`).then(res => {
       const posts = res.data;
-      console.log(posts);
       this.setState({ posts: posts, initialPosts: posts });
     });
   }

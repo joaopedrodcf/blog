@@ -50,17 +50,17 @@ class Header extends React.Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink to="/" tag={RRNavLink}>
+              <NavLink activeClassName="active" exact to="/" tag={RRNavLink}>
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/dashboard" tag={RRNavLink}>
+              <NavLink activeClassName="active" exact to="/dashboard" tag={RRNavLink}>
                 Dashboard
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink to="/contacts" tag={RRNavLink}>
+              <NavLink activeClassName="active" exact to="/contacts" tag={RRNavLink}>
                 Contacts
               </NavLink>
             </NavItem>
