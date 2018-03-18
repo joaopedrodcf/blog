@@ -11,11 +11,7 @@ import {
 
 export default class Post extends React.Component {
   render() {
-    const id = this.props.post.id;
-    const content = this.props.post.content;
-    const type = this.props.post.type.name;
-    const title = this.props.post.title;
-    const image = this.props.post.image;
+    const { id, content, title, image, type: { name } } = this.props.post;
     const deletePost = this.props.deletePost;
 
     return (
@@ -24,7 +20,7 @@ export default class Post extends React.Component {
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardText>{content}</CardText>
-          <Badge color="primary">{type}</Badge>
+          <Badge color="primary">{name}</Badge>
           <DeleteButton id={id} deletePost={deletePost} />
         </CardBody>
       </Card>

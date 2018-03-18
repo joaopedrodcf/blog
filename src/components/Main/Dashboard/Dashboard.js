@@ -102,25 +102,16 @@ export default class Dashboard extends React.Component {
             />
           </Col>
           <Col sm="8">
-            <Row>
-              <Col sm="12">
-                <h5>All Posts</h5>
-              </Col>
-            </Row>
             <Posts
               posts={this.state.posts}
               deletePost={this.deletePost.bind(this)}
             />
           </Col>
           <Col sm="2">
-            <Row>
-              <Col>
-                <SearchPosts
-                  types={this.state.types}
-                  searchPosts={this.searchPosts.bind(this)}
-                />
-              </Col>
-            </Row>
+            <SearchPosts
+              types={this.state.types}
+              searchPosts={this.searchPosts.bind(this)}
+            />
           </Col>
         </Row>
       </Container>

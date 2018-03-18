@@ -9,11 +9,18 @@ export default class Posts extends React.Component {
 
     return (
       <Row>
-        {posts.map(post => (
-          <Col key={post.id} sm="2">
-            <Post post={post} deletePost={deletePost} />
+        <Row>
+          <Col sm="12">
+            <h5>All Posts</h5>
           </Col>
-        ))}
+        </Row>
+        <Row>
+          {posts.map(post => (
+            <Col key={post.id} sm="2">
+              <Post post={post} deletePost={deletePost} />
+            </Col>
+          ))}
+        </Row>
       </Row>
     );
   }
