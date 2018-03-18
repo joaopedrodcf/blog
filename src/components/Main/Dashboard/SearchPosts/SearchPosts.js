@@ -7,7 +7,7 @@ export default class SearchPosts extends React.Component {
   }
 
   render() {
-    const types = this.props.types;
+    const {types} = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
         <h5>Filter Posts</h5>
