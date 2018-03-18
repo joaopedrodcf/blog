@@ -4,8 +4,7 @@ import { Col, Row } from "reactstrap";
 
 export default class Posts extends React.Component {
   render() {
-    const posts = this.props.posts;
-    const deletePost = this.props.deletePost;
+    const { posts, deletePost } = this.props;
 
     return (
       <Row>

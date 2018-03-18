@@ -14,7 +14,7 @@ export default class CreateType extends React.Component {
   }
 
   handleSubmit(event) {
-    const insertType = this.props.insertType;
+    const { insertType } = this.props;
     event.preventDefault();
 
     const type = {
@@ -29,9 +29,8 @@ export default class CreateType extends React.Component {
   }
 
   handleChange(event) {
-    const value = event.target.value;
-    const name = event.target.name;
-
+    const { value, name } = event.target;
+    console.log([name]);
     this.setState({
       [name]: value
     });

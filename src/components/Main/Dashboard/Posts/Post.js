@@ -12,7 +12,7 @@ import {
 export default class Post extends React.Component {
   render() {
     const { id, content, title, image, type: { name } } = this.props.post;
-    const deletePost = this.props.deletePost;
+    const { deletePost } = this.props;
 
     return (
       <Card>

@@ -3,7 +3,7 @@ import { Button } from "reactstrap";
 
 export default class DeleteButton extends React.Component {
   render() {
-    const id = this.props.id;
+    const { id } = this.props;
     // For some reason is important the () => , still need to research more
     return (
       <div>
