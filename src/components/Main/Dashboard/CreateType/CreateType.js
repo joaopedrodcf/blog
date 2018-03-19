@@ -24,13 +24,13 @@ export default class CreateType extends React.Component {
     this.setState({
       name: ""
     });
-    console.log(type);
+
     insertType(type);
   }
 
   handleChange(event) {
     const { value, name } = event.target;
-    console.log([name]);
+
     this.setState({
       [name]: value
     });

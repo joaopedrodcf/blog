@@ -74,7 +74,28 @@ export default class Dashboard extends React.Component {
       });
   }
 
-  searchPosts(query) {
+  searchPosts(filters) {
+    let posts = this.state.initialPosts.filter(post => {
+      const text = filters.text.toLowerCase();
+      const types = filters.types;
+      const { title, content, type: { name } } = post;
+
+      if (types.length === 0) {
+        console.log("Types Empty", types.length, text);
+        return (
+          title.toLowerCase().includes(text) ||
+          content.toLowerCase().includes(text)
+        );
+      }
+
+      return (
+        (title.toLowerCase().includes(text) ||
+          content.toLowerCase().includes(text)) &&
+        types.includes(name)
+      );
+    });
+
+    /*
     let posts = this.state.initialPosts.filter(post => {
       const queryInsensitive = query.toLowerCase();
       const postTitleInsensitive = post.title.toLowerCase();
@@ -86,6 +107,8 @@ export default class Dashboard extends React.Component {
         postTypeInsensitive.includes(queryInsensitive)
       );
     });
+    this.setState({ posts: posts });
+    */
     this.setState({ posts: posts });
   }
 

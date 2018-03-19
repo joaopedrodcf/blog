@@ -23,7 +23,7 @@ export default class CreatePostForm extends React.Component {
   // Handle changes to the form and update the value in the stage
 
   handleChange(event) {
-    const {value,name} = event.target;
+    const { value, name } = event.target;
 
     this.setState({
       [name]: value
@@ -38,7 +38,7 @@ export default class CreatePostForm extends React.Component {
   }
 
   handleSubmit(event) {
-    const {insertPost} = this.props;
+    const { insertPost } = this.props;
     event.preventDefault();
     const post = {
       title: this.state.title,

@@ -55,12 +55,22 @@ class Header extends React.Component {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink activeClassName="active" exact to="/dashboard" tag={RRNavLink}>
+              <NavLink
+                activeClassName="active"
+                exact
+                to="/dashboard"
+                tag={RRNavLink}
+              >
                 Dashboard
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink activeClassName="active" exact to="/contacts" tag={RRNavLink}>
+              <NavLink
+                activeClassName="active"
+                exact
+                to="/contacts"
+                tag={RRNavLink}
+              >
                 Contacts
               </NavLink>
             </NavItem>

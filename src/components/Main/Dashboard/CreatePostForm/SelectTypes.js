@@ -3,7 +3,7 @@ import { Input } from "reactstrap";
 
 export default class SelectTypes extends React.Component {
   render() {
-    const types = this.props.types;
+    const { types } = this.props;
     const handleChangeType = this.props.handleChangeType;
 
     return (
