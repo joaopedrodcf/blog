@@ -1,9 +1,8 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
 import axios from "axios";
-import Posts from "../Dashboard/Posts/Posts";
+import Posts from "./Posts";
 export default class Home extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -13,13 +12,13 @@ export default class Home extends React.Component {
       posts: []
     };
   }
-  
+
   componentDidMount() {
     this.getPosts();
   }
 
-   // CRUD for use in the components
-   getPosts() {
+  // CRUD for use in the components
+  getPosts() {
     axios.get(`http://localhost:8080/post/`).then(res => {
       const posts = res.data;
       console.log(posts);
@@ -28,19 +27,16 @@ export default class Home extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <Container fluid>
-      <Row>
-        <Col sm="2">This is the sidebar</Col>
-        <Col sm="8">
-          <h1>This is my blog homepage</h1>
-          <Posts
-              posts={this.state.posts}
-            />
-        </Col>
-        <Col sm="2">This is the sidebar</Col>
-      </Row>
-    </Container>
+        <Row>
+          <Col sm="2">This is the sidebar</Col>
+          <Col sm="8">
+            <Posts posts={this.state.posts} />
+          </Col>
+          <Col sm="2">This is the sidebar</Col>
+        </Row>
+      </Container>
     );
   }
 }
