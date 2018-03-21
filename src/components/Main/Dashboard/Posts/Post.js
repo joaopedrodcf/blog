@@ -15,7 +15,7 @@ export default class Post extends React.Component {
     const { deletePost } = this.props;
 
     return (
-      <Card color="info">
+      <Card color="info" className="rounded-0">
         <CardImg top width="100%" src={image} alt="Card image cap" />
         <CardBody>
           <CardTitle>{title}</CardTitle>

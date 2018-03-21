@@ -1,6 +1,6 @@
 import Post from "./Post";
 import React from "react";
-import { Col, Row } from "reactstrap";
+import { Col, Row, CardGroup } from "reactstrap";
 
 export default class Posts extends React.Component {
   render() {
@@ -16,7 +16,9 @@ export default class Posts extends React.Component {
         <Row>
           {posts.map(post => (
             <Col key={post.id} sm="3">
-              <Post post={post} deletePost={deletePost} />
+              <CardGroup>
+                <Post post={post} deletePost={deletePost} />
+              </CardGroup>
             </Col>
           ))}
         </Row>

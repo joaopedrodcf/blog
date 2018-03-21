@@ -20,7 +20,7 @@ export default class Post extends React.Component {
 
     return (
       <Media>
-        <Media left href="#">
+        <Media top href="#">
           <Media
             object
             src={image}
