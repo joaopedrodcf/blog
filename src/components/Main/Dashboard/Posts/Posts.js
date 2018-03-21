@@ -10,12 +10,12 @@ export default class Posts extends React.Component {
       <Row>
         <Row>
           <Col sm="12">
-            <h5>All Posts</h5>
+            <h3>All Posts</h3>
           </Col>
         </Row>
         <Row>
           {posts.map(post => (
-            <Col key={post.id} sm="2">
+            <Col key={post.id} sm="3">
               <Post post={post} deletePost={deletePost} />
             </Col>
           ))}

@@ -63,7 +63,7 @@ export default class CreatePostForm extends React.Component {
     const types = this.props.types;
     return (
       <Form onSubmit={this.handleSubmit}>
-        <h5>Create new posts</h5>
+        <h3>Create new posts</h3>
         <FormGroup>
           <Label>Title</Label>
           <Input

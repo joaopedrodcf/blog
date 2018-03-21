@@ -23,6 +23,7 @@ export default class SearchPosts extends React.Component {
   }
 
   handleSearchType(event) {
+    console.log(this.state);
     const { value, checked } = event.target;
     var types = this.state.types.slice();
     let index;
@@ -48,7 +49,7 @@ export default class SearchPosts extends React.Component {
     const { types } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
-        <h5> Filter Posts</h5>
+        <h3> Filter Posts</h3>
         <FormGroup>
           <Label>Search:</Label>
           <Input type="text" onKeyUp={this.handleSearch.bind(this)} />

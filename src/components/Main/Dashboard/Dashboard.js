@@ -75,41 +75,23 @@ export default class Dashboard extends React.Component {
   }
 
   searchPosts(filters) {
-    let posts = this.state.initialPosts.filter(post => {
-      const text = filters.text.toLowerCase();
-      const types = filters.types;
-      const { title, content, type: { name } } = post;
-
-      if (types.length === 0) {
-        console.log("Types Empty", types.length, text);
-        return (
-          title.toLowerCase().includes(text) ||
-          content.toLowerCase().includes(text)
-        );
-      }
-
-      return (
-        (title.toLowerCase().includes(text) ||
-          content.toLowerCase().includes(text)) &&
-        types.includes(name)
-      );
-    });
-
-    /*
-    let posts = this.state.initialPosts.filter(post => {
-      const queryInsensitive = query.toLowerCase();
-      const postTitleInsensitive = post.title.toLowerCase();
-      const postContentInsensitive = post.content.toLowerCase();
-      const postTypeInsensitive = post.type.name.toLowerCase();
-      return (
-        postTitleInsensitive.includes(queryInsensitive) ||
-        postContentInsensitive.includes(queryInsensitive) ||
-        postTypeInsensitive.includes(queryInsensitive)
-      );
-    });
-    this.setState({ posts: posts });
-    */
-    this.setState({ posts: posts });
+    // This part is important post
+    const text = filters.text;
+    const types = filters.types;
+    console.log(types);
+    axios
+      .post(`http://localhost:8080/post/filter`, types, {
+        params: {
+          name: text
+        }
+      })
+      .then(res => {
+        const posts = res.data;
+        this.setState({ posts: posts });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   render() {
