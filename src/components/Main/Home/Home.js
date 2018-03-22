@@ -1,14 +1,8 @@
 import React from "react";
-import {
-  Col,
-  Container,
-  Row,
-  Pagination,
-  PaginationItem,
-  PaginationLink
-} from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 import axios from "axios";
 import Posts from "./Posts";
+import Paginations from "./Paginations";
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -16,7 +10,8 @@ export default class Home extends React.Component {
     this.getPostsPagination = this.getPostsPagination.bind(this);
 
     this.state = {
-      posts: []
+      posts: [],
+      pages: 0
     };
   }
 
@@ -36,15 +31,11 @@ export default class Home extends React.Component {
       .then(res => {
         console.log(res.data.content);
         const posts = res.data.content;
-        this.setState({ posts: posts });
+        const pages = res.data.totalPages;
+        this.setState({ posts: posts, pages: pages });
       });
   }
 
-  /*
-   <Pagination
-              getPostsPagination={this.getPostsPagination.bind(this)}
-            />
-            */
   render() {
     return (
       <Container fluid>
@@ -52,24 +43,11 @@ export default class Home extends React.Component {
           <Col sm="2">This is the sidebar</Col>
           <Col sm="8">
             <Posts posts={this.state.posts} />
-
-            <Pagination>
-              <PaginationItem>
-                <PaginationLink onClick={() => this.getPostsPagination(1, 2)}>
-                  1
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink onClick={() => this.getPostsPagination(2, 2)}>
-                  2
-                </PaginationLink>
-              </PaginationItem>
-              <PaginationItem>
-                <PaginationLink onClick={() => this.getPostsPagination(3, 2)}>
-                  3
-                </PaginationLink>
-              </PaginationItem>
-            </Pagination>
+            <Paginations
+              pages={this.state.pages}
+              numElements={2} // TODO needs to be thinked
+              getPostsPagination={this.getPostsPagination.bind(this)}
+            />
           </Col>
           <Col sm="2">This is the sidebar</Col>
         </Row>
