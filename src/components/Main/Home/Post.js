@@ -10,8 +10,8 @@ import {
 } from "reactstrap";
 
 const mediaStyle = {
-  height: "64px",
-  width: "64px"
+  width: "100%",
+  height: "30rem"
 };
 
 export default class Post extends React.Component {
@@ -19,22 +19,20 @@ export default class Post extends React.Component {
     const { id, content, title, image, type: { name } } = this.props.post;
 
     return (
-      <Media>
-        <Media top href="#">
-          <Media
-            object
-            src={image}
-            alt="Generic placeholder image"
-            style={mediaStyle}
-          />
-        </Media>
-        <Media body>
-          <Media heading>
-            {title} <Badge color="primary">{name}</Badge>{" "}
-          </Media>
-          {content}
-        </Media>
-      </Media>
+      <Card color="info" className="rounded-0">
+        <CardImg
+          top
+          width="100%"
+          src={image}
+          style={mediaStyle}
+          alt="Card image cap"
+        />
+        <CardBody>
+          <CardTitle>{title}</CardTitle>
+          <CardText>{content}</CardText>
+          <Badge color="primary">{name}</Badge>
+        </CardBody>
+      </Card>
     );
   }
 }

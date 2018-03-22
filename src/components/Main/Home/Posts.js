@@ -9,14 +9,13 @@ export default class Posts extends React.Component {
     return (
       <Row>
         <Row>
-          <Col sm="12">
-            <h3>All Posts</h3>
-          </Col>
+          <h3>All Posts</h3>
         </Row>
         <Row>
           {posts.map(post => (
-            <Col key={post.id} sm="8">
+            <Col key={post.id} md="6" sm="12">
               <Post post={post} />
+              <br />
             </Col>
           ))}
         </Row>
