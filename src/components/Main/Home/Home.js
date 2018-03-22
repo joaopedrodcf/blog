@@ -3,6 +3,11 @@ import { Col, Container, Row } from "reactstrap";
 import axios from "axios";
 import Posts from "./Posts";
 import Paginations from "./Paginations";
+
+const mediaStyle = {
+  backgroundImage: `url(https://images.unsplash.com/photo-1512930366077-deb21fed7bc4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=79cf09e2a06efb0b3cf5344e638bbe94&auto=format&fit=crop&w=1514&q=80)`
+};
+
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
