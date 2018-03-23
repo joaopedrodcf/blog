@@ -41,9 +41,7 @@ export default class Home extends React.Component {
     return (
       <Container fluid>
         <Row>
-          <Col md="3" sm="1">
-            This is the sidebar
-          </Col>
+          <Col md="3" sm="1" />
           <Col md="6" sm="10">
             <Posts posts={this.state.posts} />
 
@@ -53,9 +51,7 @@ export default class Home extends React.Component {
               getPostsPagination={this.getPostsPagination.bind(this)}
             />
           </Col>
-          <Col md="3" sm="1">
-            This is the sidebar
-          </Col>
+          <Col md="3" sm="1" />
         </Row>
       </Container>
     );

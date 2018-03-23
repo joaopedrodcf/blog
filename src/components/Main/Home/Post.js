@@ -5,13 +5,11 @@ import {
   CardBody,
   CardImg,
   CardText,
-  CardTitle,
-  Media
+  CardTitle
 } from "reactstrap";
 
 const mediaStyle = {
-  width: "100%",
-  height: "30rem"
+  width: "100%"
 };
 
 export default class Post extends React.Component {
@@ -20,13 +18,7 @@ export default class Post extends React.Component {
 
     return (
       <Card color="info" className="rounded-0">
-        <CardImg
-          top
-          width="100%"
-          src={image}
-          style={mediaStyle}
-          alt="Card image cap"
-        />
+        <CardImg top width="100%" src={image} alt="Card image cap" />
         <CardBody>
           <CardTitle>{title}</CardTitle>
           <CardText>{content}</CardText>

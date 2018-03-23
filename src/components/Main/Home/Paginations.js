@@ -4,7 +4,6 @@ import {
   Row,
   Pagination,
   PaginationItem,
-  PaginationItemProps,
   PaginationLink
 } from "reactstrap";
 
