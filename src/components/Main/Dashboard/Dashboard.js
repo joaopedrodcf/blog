@@ -1,4 +1,5 @@
-import Posts from "./Posts/Posts";
+import Posts from "../Posts/Posts";
+import DeleteButton from "../Posts/DeleteButton";
 import SearchPosts from "./SearchPosts/SearchPosts";
 import SidebarRight from "./SidebarRight";
 
@@ -106,10 +107,9 @@ export default class Dashboard extends React.Component {
             />
           </Col>
           <Col sm="8">
-            <Posts
-              posts={this.state.posts}
-              deletePost={this.deletePost.bind(this)}
-            />
+            <Posts posts={this.state.posts}>
+              <DeleteButton deletePost={this.deletePost.bind(this)} />
+            </Posts>
           </Col>
           <Col sm="2">
             <SearchPosts

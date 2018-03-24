@@ -1,7 +1,7 @@
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
 import axios from "axios";
-import Posts from "./Posts";
+import Posts from "../Posts/Posts";
 import Paginations from "./Paginations";
 
 export default class Home extends React.Component {
@@ -43,7 +43,7 @@ export default class Home extends React.Component {
         <Row>
           <Col md="3" sm="1" />
           <Col md="6" sm="10">
-            <Posts posts={this.state.posts} />
+            <Posts posts={this.state.posts} size={6} />
 
             <Paginations
               pages={this.state.pages}

@@ -4,20 +4,20 @@ import { Col, Row, CardGroup } from "reactstrap";
 
 export default class Posts extends React.Component {
   render() {
-    const { posts, deletePost } = this.props;
-
+    const { posts } = this.props;
+    const { children, size } = this.props;
     return (
       <Row>
         <Row>
-          <Col sm="12">
+          <Col>
             <h3>All Posts</h3>
           </Col>
         </Row>
         <Row>
           {posts.map(post => (
-            <Col key={post.id} sm="3">
+            <Col key={post.id} sm={size}>
               <CardGroup>
-                <Post post={post} deletePost={deletePost} />
+                <Post post={post}>{children}</Post>
               </CardGroup>
             </Col>
           ))}
