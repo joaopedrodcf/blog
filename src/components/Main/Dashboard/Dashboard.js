@@ -100,19 +100,19 @@ export default class Dashboard extends React.Component {
     return (
       <Container fluid className="flex-fill">
         <Row>
-          <Col sm="2">
+          <Col sm="3">
             <SidebarRight
               types={this.state.types}
               insertPost={this.createPost.bind(this)}
               insertType={this.createType.bind(this)}
             />
           </Col>
-          <Col sm="8">
+          <Col md="6" sm="10">
             <Posts posts={this.state.posts}>
               <DeleteButton deletePost={this.deletePost.bind(this)} />
             </Posts>
           </Col>
-          <Col sm="2">
+          <Col sm="3">
             <SearchPosts
               types={this.state.types}
               searchPosts={this.searchPosts.bind(this)}

@@ -43,9 +43,9 @@ export default class Home extends React.Component {
     return (
       <Container fluid className="flex-fill">
         <Row>
-          <Col md="3" sm="1" />
-          <Col md="6" sm="10">
-            <Posts posts={this.state.posts} size={6} />
+          <Col md="4" sm="1" />
+          <Col md="4" sm="10">
+            <Posts posts={this.state.posts} />
 
             <Paginations
               pages={this.state.pages}
@@ -53,7 +53,7 @@ export default class Home extends React.Component {
               getPostsPagination={this.getPostsPagination.bind(this)}
             />
           </Col>
-          <Col md="3" sm="1" />
+          <Col md="4" sm="1" />
         </Row>
       </Container>
     );

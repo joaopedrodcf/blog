@@ -24,7 +24,7 @@ export default class Post extends React.Component {
     return (
       <Card color="info">
         <CardImg top width="100%" src={image} alt="Card image cap" />
-        <CardBody>
+        <CardBody className="cardName">
           <CardTitle>{title}</CardTitle>
           <CardText>{content}</CardText>
           <Badge color="primary">{name}</Badge>

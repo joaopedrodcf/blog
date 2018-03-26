@@ -15,8 +15,8 @@ export default class Posts extends React.Component {
         </Row>
         <Row>
           {posts.map(post => (
-            <Col key={post.id} sm={size}>
-              <CardGroup>
+            <Col key={post.id} sm="12" md="12">
+              <CardGroup className="cardGroup">
                 <Post post={post}>{children}</Post>
               </CardGroup>
             </Col>

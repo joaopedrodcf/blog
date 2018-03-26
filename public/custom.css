@@ -17,3 +17,11 @@ footer {
   background-color: aquamarine;
   padding: 1%;
 }
+
+.cardName button {
+  margin: 1% 1%;
+}
+
+.cardGroup {
+  margin: 1% 0%;
+}
