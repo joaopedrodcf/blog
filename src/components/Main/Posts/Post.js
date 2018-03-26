@@ -5,7 +5,8 @@ import {
   CardBody,
   CardImg,
   CardText,
-  CardTitle
+  CardTitle,
+  Button
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -29,7 +30,7 @@ export default class Post extends React.Component {
           <Badge color="primary">{name}</Badge>
           {child}
           <Link to={`/post/${id}`}>
-            <button type="button">Show more</button>
+            <Button color="primary">Show more</Button>
           </Link>
         </CardBody>
       </Card>
