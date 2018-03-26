@@ -7,6 +7,7 @@ import {
   CardText,
   CardTitle
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default class Post extends React.Component {
   render() {
@@ -27,6 +28,9 @@ export default class Post extends React.Component {
           <CardText>{content}</CardText>
           <Badge color="primary">{name}</Badge>
           {child}
+          <Link to={`/post/${id}`}>
+            <button type="button">Show more</button>
+          </Link>
         </CardBody>
       </Card>
     );

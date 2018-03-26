@@ -52,6 +52,7 @@ export default class Dashboard extends React.Component {
     axios
       .post(`http://localhost:8080/post/`, {
         title: post.title,
+        description: post.description,
         content: post.content,
         image: post.image,
         type: {
