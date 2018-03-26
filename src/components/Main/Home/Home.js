@@ -41,7 +41,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container fluid className="flex-fill">
         <Row>
           <Col md="3" sm="1" />
           <Col md="6" sm="10">

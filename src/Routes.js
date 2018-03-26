@@ -6,6 +6,7 @@ import Dashboard from "./components/Main/Dashboard/Dashboard";
 import Home from "./components/Main/Home/Home";
 import Header from "./components/Nav/Header";
 import Main from "./components/Main/Main";
+import Footer from "./components/Footer/Footer";
 import {
   NavbarBrand,
   Navbar,
@@ -19,10 +20,11 @@ import {
 export default class Routes extends React.Component {
   render() {
     return (
-      <div>
+      <wrapper className="d-flex flex-column">
         <Header />
         <Main />
-      </div>
+        <Footer />
+      </wrapper>
     );
   }
 }

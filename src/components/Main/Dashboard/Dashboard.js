@@ -98,7 +98,7 @@ export default class Dashboard extends React.Component {
 
   render() {
     return (
-      <Container fluid>
+      <Container fluid className="flex-fill">
         <Row>
           <Col sm="2">
             <SidebarRight
