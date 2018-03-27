@@ -1,53 +1,30 @@
-import Posts from "../Posts/Posts";
-import DeleteButton from "../Posts/DeleteButton";
-import SearchPosts from "./SearchPosts/SearchPosts";
-import SidebarRight from "./SidebarRight";
-//import Api from "../../Api/Api";
-
 import axios from "axios";
 import React from "react";
-import { Col, Container, Row } from "reactstrap";
 
 // -------------------------This is the main App--------------------------------
-export default class Dashboard extends React.Component {
+export default class Api extends React.Component {
   constructor(props) {
     super(props);
 
-    this.getPosts = this.getPosts.bind(this);
-
-    this.state = {
-      posts: [],
-      initialPosts: [],
-      types: []
-    };
-
     this.urlPost = `http://localhost:8080/post/`;
     this.urlType = `http://localhost:8080/type/`;
-  }
-
-  componentDidMount() {
-    this.getPosts();
-    this.getTypes();
   }
 
   // CRUD for use in the components
   getPosts() {
     axios.get(this.urlPost).then(res => {
       const posts = res.data;
-      this.setState({ posts: posts, initialPosts: posts });
     });
   }
 
   getTypes() {
     axios.get(this.urlPost).then(res => {
       const types = res.data;
-      this.setState({ types: types });
     });
   }
 
   deletePost(id) {
     axios.delete(this.urlPost + `${id}`).then(res => {
-      // here need to fetch again the posts from the webapp
       this.getPosts();
     });
   }
@@ -84,7 +61,7 @@ export default class Dashboard extends React.Component {
     // This part is important post
     const text = filters.text;
     const types = filters.types;
-    console.log(types);
+
     axios
       .post(this.urlPost + `filter`, types, {
         params: {
@@ -93,37 +70,9 @@ export default class Dashboard extends React.Component {
       })
       .then(res => {
         const posts = res.data;
-        this.setState({ posts: posts });
       })
       .catch(function(error) {
         console.log(error);
       });
-  }
-
-  render() {
-    return (
-      <Container fluid className="flex-fill">
-        <Row>
-          <Col sm="3">
-            <SidebarRight
-              types={this.state.types}
-              insertPost={this.createPost.bind(this)}
-              insertType={this.createType.bind(this)}
-            />
-          </Col>
-          <Col md="6" sm="10">
-            <Posts posts={this.state.posts}>
-              <DeleteButton deletePost={this.deletePost.bind(this)} />
-            </Posts>
-          </Col>
-          <Col sm="3">
-            <SearchPosts
-              types={this.state.types}
-              searchPosts={this.searchPosts.bind(this)}
-            />
-          </Col>
-        </Row>
-      </Container>
-    );
   }
 }
