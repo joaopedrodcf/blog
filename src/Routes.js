@@ -20,11 +20,11 @@ import {
 export default class Routes extends React.Component {
   render() {
     return (
-      <wrapper className="d-flex flex-column">
+      <div className="d-flex flex-column">
         <Header />
         <Main />
         <Footer />
-      </wrapper>
+      </div>
     );
   }
 }

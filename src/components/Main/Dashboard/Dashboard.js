@@ -2,7 +2,7 @@ import Posts from "../Posts/Posts";
 import DeleteButton from "../Posts/DeleteButton";
 import SearchPosts from "./SearchPosts/SearchPosts";
 import SidebarRight from "./SidebarRight";
-//import Api from "../../Api/Api";
+import Api from "../../Api/Api";
 
 import axios from "axios";
 import React from "react";
@@ -21,6 +21,7 @@ export default class Dashboard extends React.Component {
       types: []
     };
 
+    this.Api = new Api();
     this.urlPost = `http://localhost:8080/post/`;
     this.urlType = `http://localhost:8080/type/`;
   }
@@ -39,7 +40,7 @@ export default class Dashboard extends React.Component {
   }
 
   getTypes() {
-    axios.get(this.urlPost).then(res => {
+    axios.get(this.urlType).then(res => {
       const types = res.data;
       this.setState({ types: types });
     });
