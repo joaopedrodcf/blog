@@ -2,7 +2,7 @@ import Post from "./Post";
 import React from "react";
 import { Col, Row, CardGroup } from "reactstrap";
 
-export default class Posts extends React.Component {
+export default class PostsTable extends React.Component {
   render() {
     const { posts } = this.props;
     const { children, size } = this.props;

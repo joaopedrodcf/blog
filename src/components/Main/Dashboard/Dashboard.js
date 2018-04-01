@@ -1,5 +1,5 @@
-import Posts from "../Posts/Posts";
-import DeleteButton from "../Posts/DeleteButton";
+import PostsTable from "./Posts/PostsTable";
+//import DeleteButton from "../Posts/DeleteButton";
 import SearchPosts from "./SearchPosts/SearchPosts";
 import SidebarRight from "./SidebarRight";
 import Api from "../../Api/Api";
@@ -113,9 +113,10 @@ export default class Dashboard extends React.Component {
             />
           </Col>
           <Col md="6" sm="10">
-            <Posts posts={this.state.posts}>
-              <DeleteButton deletePost={this.deletePost.bind(this)} />
-            </Posts>
+            <PostsTable
+              posts={this.state.posts}
+              deletePost={this.deletePost.bind(this)}
+            />
           </Col>
           <Col sm="3">
             <SearchPosts

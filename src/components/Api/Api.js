@@ -18,7 +18,7 @@ export default class Api extends React.Component {
   }
 
   getTypes() {
-    axios.get(this.urlPost).then(res => {
+    axios.get(this.urlType).then(res => {
       const types = res.data;
     });
   }
