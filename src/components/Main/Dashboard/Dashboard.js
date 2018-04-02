@@ -1,8 +1,8 @@
 import PostsTable from "./Posts/PostsTable";
-//import DeleteButton from "../Posts/DeleteButton";
 import SearchPosts from "./SearchPosts/SearchPosts";
 import SidebarRight from "./SidebarRight";
-
+import CreateType from "./CreateType/CreateType";
+import CreatePostForm from "./CreatePostForm/CreatePostForm";
 import axios from "axios";
 import React from "react";
 import {
@@ -32,17 +32,25 @@ export default class Dashboard extends React.Component {
       posts: [],
       initialPosts: [],
       types: [],
-      modal: false
+      modalCreatePost: false,
+      modalCreateType: false
     };
 
     this.urlPost = `http://localhost:8080/post/`;
     this.urlType = `http://localhost:8080/type/`;
-    this.toggle = this.toggle.bind(this);
+    this.toggleCreatePost = this.toggleCreatePost.bind(this);
+    this.toggleCreateType = this.toggleCreateType.bind(this);
   }
 
-  toggle() {
+  toggleCreatePost() {
     this.setState({
-      modal: !this.state.modal
+      modalCreatePost: !this.state.modalCreatePost
+    });
+  }
+
+  toggleCreateType() {
+    this.setState({
+      modalCreateType: !this.state.modalCreateType
     });
   }
 
@@ -87,6 +95,7 @@ export default class Dashboard extends React.Component {
       })
       .then(res => {
         this.getPosts();
+        this.toggleCreatePost();
       });
   }
 
@@ -98,6 +107,7 @@ export default class Dashboard extends React.Component {
       })
       .then(res => {
         this.getTypes();
+        this.toggleCreateType();
       });
   }
 
@@ -131,39 +141,85 @@ export default class Dashboard extends React.Component {
             <Card>
               <CardHeader tag="h5">Posts</CardHeader>
               <CardBody>
-                <SearchPosts
-                  types={this.state.types}
-                  searchPosts={this.searchPosts.bind(this)}
-                />
-                <br />
-                <Button color="secondary" onClick={this.toggle}>
-                  Create Post
-                </Button>
-                <Modal
-                  isOpen={this.state.modal}
-                  toggle={this.toggle}
-                  className={this.props.className}
-                >
-                  <ModalHeader toggle={this.toggle}>Create Post</ModalHeader>
-                  <ModalBody>
-                    <Container fluid>
-                      <Row>
-                        <Col>
-                          <SidebarRight
-                            types={this.state.types}
-                            insertPost={this.createPost.bind(this)}
-                            insertType={this.createType.bind(this)}
-                          />
-                        </Col>
-                      </Row>
-                    </Container>
-                  </ModalBody>
-                  <ModalFooter>
-                    <Button color="secondary" onClick={this.toggle}>
-                      Cancel
+                <Row>
+                  <Col sm="10">
+                    <SearchPosts
+                      types={this.state.types}
+                      searchPosts={this.searchPosts.bind(this)}
+                    />
+                  </Col>
+                  <Col sm="1">
+                    <Button color="secondary" onClick={this.toggleCreatePost}>
+                      Create Post
                     </Button>
-                  </ModalFooter>
-                </Modal>
+                    <Modal
+                      isOpen={this.state.modalCreatePost}
+                      toggle={this.toggleCreatePost}
+                      className={this.props.className}
+                    >
+                      <ModalHeader toggle={this.toggle}>
+                        Create Post
+                      </ModalHeader>
+                      <ModalBody>
+                        <Container fluid>
+                          <Row>
+                            <Col>
+                              <CreatePostForm
+                                types={this.state.types}
+                                insertPost={this.createPost.bind(this)}
+                              />
+                            </Col>
+                          </Row>
+                        </Container>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          color="secondary"
+                          onClick={this.toggleCreatePost}
+                        >
+                          Cancel
+                        </Button>
+                      </ModalFooter>
+                    </Modal>
+                  </Col>
+                  <Col sm="1">
+                    <Button color="secondary" onClick={this.toggleCreateType}>
+                      Create type
+                    </Button>
+                    <Modal
+                      isOpen={this.state.modalCreateType}
+                      toggle={this.toggleCreateType}
+                      className={this.props.className}
+                    >
+                      <ModalHeader toggle={this.toggleCreateType}>
+                        Create Type
+                      </ModalHeader>
+                      <ModalBody>
+                        <Container fluid>
+                          <Row>
+                            <Col>
+                              <CreateType
+                                insertType={this.createType.bind(this)}
+                              />
+                            </Col>
+                          </Row>
+                        </Container>
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          color="secondary"
+                          onClick={this.toggleCreateType}
+                        >
+                          Cancel
+                        </Button>
+                      </ModalFooter>
+                    </Modal>
+                  </Col>
+                  <Col />
+                </Row>
+
+                <br />
+
                 <br />
                 <br />
                 <PostsTable

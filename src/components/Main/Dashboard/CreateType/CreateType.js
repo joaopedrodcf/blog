@@ -39,7 +39,6 @@ export default class CreateType extends React.Component {
   render() {
     return (
       <Form onSubmit={this.handleSubmit}>
-        <h3>Create new types</h3>
         <FormGroup>
           <Label>Type</Label>
           <Input
