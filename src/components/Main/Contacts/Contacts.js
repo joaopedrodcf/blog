@@ -5,7 +5,7 @@ import React from "react";
 import { Col, Container as ContainerBootstrap, Row } from "reactstrap";
 
 const Contacts = () => (
-  <ContainerBootstrap fluid className="flex-fill">
+  <ContainerBootstrap fluid>
     <Row>
       <Col sm="2">
         <Sidebar />

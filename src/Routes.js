@@ -20,9 +20,12 @@ import {
 export default class Routes extends React.Component {
   render() {
     return (
-      <div className="d-flex flex-column">
-        <Header />
-        <Main />
+      <div className="wrapper">
+        <div className="content">
+          <Header />
+          <Main />
+        </div>
+
         <Footer />
       </div>
     );
