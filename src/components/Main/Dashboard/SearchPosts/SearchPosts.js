@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, FormGroup, Input, Label } from "reactstrap";
+import { Form, FormGroup, Input, Label, Row, Col } from "reactstrap";
 
 export default class SearchPosts extends React.Component {
   constructor(props) {
@@ -48,14 +48,13 @@ export default class SearchPosts extends React.Component {
   render() {
     const { types } = this.props;
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <h3> Filter Posts</h3>
-        <FormGroup>
+      <Form onSubmit={this.handleSubmit} inline>
+        <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
           <Label>Search:</Label>
           <Input type="text" onKeyUp={this.handleSearch.bind(this)} />
         </FormGroup>
         {types.map(type => (
-          <FormGroup check key={type.id}>
+          <FormGroup check key={type.id} className="mb-2 mr-sm-2 mb-sm-0">
             <Label check>
               <Input
                 type="checkbox"

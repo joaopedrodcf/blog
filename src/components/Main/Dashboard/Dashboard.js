@@ -2,11 +2,24 @@ import PostsTable from "./Posts/PostsTable";
 //import DeleteButton from "../Posts/DeleteButton";
 import SearchPosts from "./SearchPosts/SearchPosts";
 import SidebarRight from "./SidebarRight";
-import Api from "../../Api/Api";
 
 import axios from "axios";
 import React from "react";
-import { Col, Container, Row, Button } from "reactstrap";
+import {
+  Col,
+  Container,
+  Row,
+  Button,
+  Card,
+  CardHeader,
+  CardBody,
+  CardText,
+  CardTitle,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter
+} from "reactstrap";
 
 // -------------------------This is the main App--------------------------------
 export default class Dashboard extends React.Component {
@@ -18,12 +31,19 @@ export default class Dashboard extends React.Component {
     this.state = {
       posts: [],
       initialPosts: [],
-      types: []
+      types: [],
+      modal: false
     };
 
-    this.Api = new Api();
     this.urlPost = `http://localhost:8080/post/`;
     this.urlType = `http://localhost:8080/type/`;
+    this.toggle = this.toggle.bind(this);
+  }
+
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
   }
 
   componentDidMount() {
@@ -103,25 +123,57 @@ export default class Dashboard extends React.Component {
 
   render() {
     return (
-      <Container fluid className="flex-fill">
+      <Container fluid>
+        <br />
         <Row>
-          <Col md="9" sm="12">
-            <PostsTable
-              posts={this.state.posts}
-              deletePost={this.deletePost.bind(this)}
-            />
+          <Col />
+          <Col sm="10" md="10">
+            <Card>
+              <CardHeader tag="h5">Posts</CardHeader>
+              <CardBody>
+                <SearchPosts
+                  types={this.state.types}
+                  searchPosts={this.searchPosts.bind(this)}
+                />
+                <br />
+                <Button color="secondary" onClick={this.toggle}>
+                  Create Post
+                </Button>
+                <Modal
+                  isOpen={this.state.modal}
+                  toggle={this.toggle}
+                  className={this.props.className}
+                >
+                  <ModalHeader toggle={this.toggle}>Create Post</ModalHeader>
+                  <ModalBody>
+                    <Container fluid>
+                      <Row>
+                        <Col>
+                          <SidebarRight
+                            types={this.state.types}
+                            insertPost={this.createPost.bind(this)}
+                            insertType={this.createType.bind(this)}
+                          />
+                        </Col>
+                      </Row>
+                    </Container>
+                  </ModalBody>
+                  <ModalFooter>
+                    <Button color="secondary" onClick={this.toggle}>
+                      Cancel
+                    </Button>
+                  </ModalFooter>
+                </Modal>
+                <br />
+                <br />
+                <PostsTable
+                  posts={this.state.posts}
+                  deletePost={this.deletePost.bind(this)}
+                />
+              </CardBody>
+            </Card>
           </Col>
-          <Col md="3">
-            <SearchPosts
-              types={this.state.types}
-              searchPosts={this.searchPosts.bind(this)}
-            />
-            <SidebarRight
-              types={this.state.types}
-              insertPost={this.createPost.bind(this)}
-              insertType={this.createType.bind(this)}
-            />
-          </Col>
+          <Col />
         </Row>
       </Container>
     );

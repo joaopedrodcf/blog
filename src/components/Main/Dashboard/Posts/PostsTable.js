@@ -10,11 +10,6 @@ export default class PostsTable extends React.Component {
         <Col>
           <Row>
             <Col>
-              <h3> All Posts </h3>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
               <Table responsive dark>
                 <thead>
                   <tr>
