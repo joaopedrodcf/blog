@@ -6,7 +6,7 @@ import Api from "../../Api/Api";
 
 import axios from "axios";
 import React from "react";
-import { Col, Container, Row } from "reactstrap";
+import { Col, Container, Row, Button } from "reactstrap";
 
 // -------------------------This is the main App--------------------------------
 export default class Dashboard extends React.Component {
@@ -105,23 +105,21 @@ export default class Dashboard extends React.Component {
     return (
       <Container fluid className="flex-fill">
         <Row>
-          <Col sm="3">
-            <SidebarRight
-              types={this.state.types}
-              insertPost={this.createPost.bind(this)}
-              insertType={this.createType.bind(this)}
-            />
-          </Col>
-          <Col md="6" sm="10">
+          <Col md="9" sm="12">
             <PostsTable
               posts={this.state.posts}
               deletePost={this.deletePost.bind(this)}
             />
           </Col>
-          <Col sm="3">
+          <Col md="3">
             <SearchPosts
               types={this.state.types}
               searchPosts={this.searchPosts.bind(this)}
+            />
+            <SidebarRight
+              types={this.state.types}
+              insertPost={this.createPost.bind(this)}
+              insertType={this.createType.bind(this)}
             />
           </Col>
         </Row>

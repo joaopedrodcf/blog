@@ -23,7 +23,6 @@ export default class PostsTable extends React.Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {" "}
                   {posts.map(post => (
                     <PostRow post={post} deletePost={deletePost} />
                   ))}
