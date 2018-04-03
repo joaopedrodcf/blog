@@ -19,7 +19,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.getPostsPagination(1, 2);
+    this.getPostsPagination(0, 2);
   }
 
   // CRUD for use in the components
