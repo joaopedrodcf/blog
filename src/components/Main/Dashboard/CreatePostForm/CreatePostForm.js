@@ -51,13 +51,6 @@ export default class CreatePostForm extends React.Component {
       }
     };
 
-    this.setState({
-      title: "",
-      content: "",
-      description: "",
-      image: ""
-    });
-
     console.log(post);
     insertPost(post);
   }
@@ -76,20 +69,20 @@ export default class CreatePostForm extends React.Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Content</Label>
-          <Input
-            type="textarea"
-            name="content"
-            value={this.state.content}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
           <Label>Description</Label>
           <Input
             type="textarea"
             name="description"
             value={this.state.description}
+            onChange={this.handleChange}
+          />
+        </FormGroup>
+        <FormGroup>
+          <Label>Content</Label>
+          <Input
+            type="textarea"
+            name="content"
+            value={this.state.content}
             onChange={this.handleChange}
           />
         </FormGroup>
