@@ -47,7 +47,7 @@ export default class PostRow extends React.Component {
     return (
       <tr>
         <td>{title}</td>
-        <td>{content}</td>
+        <td>{description}</td>
         <td>
           <Badge color="primary">{name}</Badge>
         </td>
@@ -69,7 +69,7 @@ export default class PostRow extends React.Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Col>{description}</Col>
+                  <Col>{content}</Col>
                 </Row>
               </Container>
             </ModalBody>

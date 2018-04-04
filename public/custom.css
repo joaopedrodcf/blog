@@ -1,3 +1,10 @@
+/* Uncomment to se the borders*/
+/*
+* {
+  border: 1px solid red;
+}
+*/
+
 body {
   background-image: url("https://images.unsplash.com/photo-1504756946756-3324161570ad?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=226aa4c033c9131d05280c2c89c2a615&auto=format&fit=crop&w=1350&q=80");
   background-position: center;
@@ -16,10 +23,7 @@ body {
 Footer
 */
 html,
-body {
-  height: 100%;
-}
-
+body,
 #root {
   height: 100%;
 }
@@ -30,14 +34,22 @@ body {
   flex-direction: column;
 }
 
+.container-header-main {
+  flex: 1 0 auto;
+}
+
 footer {
-  background-color: aquamarine;
+  background-color: rgb(50, 109, 219);
   padding: 1%;
 }
 
-.content {
-  flex: 1 0 auto;
+/* Other */
+.col a {
+  text-decoration: none;
+  color: white !important;
+  outline: none;
 }
-.footer {
-  flex-shrink: 0;
+
+.post-detailed {
+  margin: 1% 0%;
 }

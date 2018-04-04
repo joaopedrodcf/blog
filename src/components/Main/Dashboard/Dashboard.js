@@ -26,8 +26,6 @@ export default class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
-    this.getPosts = this.getPosts.bind(this);
-
     this.state = {
       posts: [],
       initialPosts: [],
@@ -38,6 +36,8 @@ export default class Dashboard extends React.Component {
 
     this.urlPost = `http://localhost:8080/post/`;
     this.urlType = `http://localhost:8080/type/`;
+
+    this.getPosts = this.getPosts.bind(this);
     this.toggleCreatePost = this.toggleCreatePost.bind(this);
     this.toggleCreateType = this.toggleCreateType.bind(this);
   }
@@ -142,13 +142,13 @@ export default class Dashboard extends React.Component {
               <CardHeader tag="h5">Posts</CardHeader>
               <CardBody>
                 <Row>
-                  <Col sm="10">
+                  <Col sm="8" md="10">
                     <SearchPosts
                       types={this.state.types}
                       searchPosts={this.searchPosts.bind(this)}
                     />
                   </Col>
-                  <Col sm="1">
+                  <Col sm="2" md="1">
                     <Button color="secondary" onClick={this.toggleCreatePost}>
                       Create Post
                     </Button>

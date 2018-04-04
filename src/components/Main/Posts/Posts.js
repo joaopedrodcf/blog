@@ -8,20 +8,13 @@ export default class PostsTable extends React.Component {
     const { children, size } = this.props;
     return (
       <Row>
-        <Row>
-          <Col>
-            <h3>All Posts</h3>
+        {posts.map(post => (
+          <Col key={post.id} sm="12" md="12">
+            <CardGroup className="cardGroup">
+              <Post post={post} />
+            </CardGroup>
           </Col>
-        </Row>
-        <Row>
-          {posts.map(post => (
-            <Col key={post.id} sm="12" md="12">
-              <CardGroup className="cardGroup">
-                <Post post={post}>{children}</Post>
-              </CardGroup>
-            </Col>
-          ))}
-        </Row>
+        ))}
       </Row>
     );
   }

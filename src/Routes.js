@@ -21,7 +21,7 @@ export default class Routes extends React.Component {
   render() {
     return (
       <div className="wrapper">
-        <div className="content">
+        <div className="container-header-main">
           <Header />
           <Main />
         </div>
