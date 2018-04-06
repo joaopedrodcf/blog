@@ -1,21 +1,17 @@
-import Container from "./Container";
+import ContactForm from "./ContactForm";
 import Sidebar from "./Sidebar";
 
 import React from "react";
-import { Col, Container as ContainerBootstrap, Row } from "reactstrap";
+import { Col, Container, Row } from "reactstrap";
 
 const Contacts = () => (
-  <ContainerBootstrap fluid>
+  <Container fluid>
     <Row>
-      <Col sm="2">
-        <Sidebar />
+      <Col>
+        <ContactForm />
       </Col>
-      <Col sm="10">
-        <Container />
-      </Col>
-      <Col sm="2" />
     </Row>
-  </ContainerBootstrap>
+  </Container>
 );
 
 export default Contacts;

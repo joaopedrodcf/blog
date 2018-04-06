@@ -5,7 +5,6 @@ import { Col, Row, CardGroup } from "reactstrap";
 export default class PostsTable extends React.Component {
   render() {
     const { posts } = this.props;
-    const { children, size } = this.props;
     return (
       <Row>
         {posts.map(post => (

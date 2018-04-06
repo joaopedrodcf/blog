@@ -6,7 +6,7 @@ export default class PostsTable extends React.Component {
   render() {
     const { posts, deletePost } = this.props;
     return (
-      <Row>
+      <Row className="margin-top-table">
         <Col>
           <Row>
             <Col>

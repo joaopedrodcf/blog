@@ -53,3 +53,16 @@ footer {
 .post-detailed {
   margin: 1% 0%;
 }
+
+.marging-top-card {
+  margin-top: 2%;
+}
+
+.margin-top-table {
+  margin-top: 3%;
+}
+
+.margin-bottom-button {
+  margin-left: 2%;
+  margin-bottom: 2%;
+}

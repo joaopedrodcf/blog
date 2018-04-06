@@ -51,7 +51,6 @@ export default class CreatePostForm extends React.Component {
       }
     };
 
-    console.log(post);
     insertPost(post);
   }
 

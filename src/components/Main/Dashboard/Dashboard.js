@@ -134,21 +134,20 @@ export default class Dashboard extends React.Component {
   render() {
     return (
       <Container fluid>
-        <br />
-        <Row>
+        <Row className="marging-top-card">
           <Col />
           <Col sm="10" md="10">
             <Card>
               <CardHeader tag="h5">Posts</CardHeader>
               <CardBody>
                 <Row>
-                  <Col sm="8" md="10">
+                  <Col sm="8" md="7" lg="9">
                     <SearchPosts
                       types={this.state.types}
                       searchPosts={this.searchPosts.bind(this)}
                     />
                   </Col>
-                  <Col sm="2" md="1">
+                  <Col sm="2" md="2" lg="1" className="margin-bottom-button">
                     <Button color="secondary" onClick={this.toggleCreatePost}>
                       Create Post
                     </Button>
@@ -182,7 +181,7 @@ export default class Dashboard extends React.Component {
                       </ModalFooter>
                     </Modal>
                   </Col>
-                  <Col sm="1">
+                  <Col sm="2" md="2" lg="1" className="margin-bottom-button">
                     <Button color="secondary" onClick={this.toggleCreateType}>
                       Create type
                     </Button>
@@ -218,10 +217,6 @@ export default class Dashboard extends React.Component {
                   <Col />
                 </Row>
 
-                <br />
-
-                <br />
-                <br />
                 <PostsTable
                   posts={this.state.posts}
                   deletePost={this.deletePost.bind(this)}

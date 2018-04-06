@@ -13,13 +13,6 @@ import { Link } from "react-router-dom";
 export default class Post extends React.Component {
   render() {
     const { id, description, title, image, type: { name } } = this.props.post;
-    const { children } = this.props;
-
-    // Use this to only assing the child if it exists
-    let child = null;
-    if (children != null) {
-      child = React.cloneElement(children, { id: id });
-    }
 
     return (
       <Card color="info">
