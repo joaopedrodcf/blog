@@ -1,8 +1,5 @@
 import PostsTable from "./Posts/PostsTable";
 import SearchPosts from "./SearchPosts/SearchPosts";
-import SidebarRight from "./SidebarRight";
-import CreateType from "./CreateType/CreateType";
-import CreatePostForm from "./CreatePostForm/CreatePostForm";
 import CreatePostModal from "./CreatePostModal";
 import CreateTypeModal from "./CreateTypeModal";
 import axios from "axios";
@@ -39,13 +36,6 @@ export default class Dashboard extends React.Component {
     this.urlType = `http://localhost:8080/type/`;
 
     this.getPosts = this.getPosts.bind(this);
-    this.toggleCreateType = this.toggleCreateType.bind(this);
-  }
-
-  toggleCreateType() {
-    this.setState({
-      modalCreateType: !this.state.modalCreateType
-    });
   }
 
   componentDidMount() {

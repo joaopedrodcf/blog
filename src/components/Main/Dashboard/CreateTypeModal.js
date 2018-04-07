@@ -9,7 +9,7 @@ import {
   Container,
   ModalFooter
 } from "reactstrap";
-import CreateType from "./CreateType/CreateType";
+import CreateTypeForm from "./CreateTypeForm/CreateTypeForm";
 
 export default class CreatePostModal extends React.Component {
   constructor(props) {
@@ -49,7 +49,7 @@ export default class CreatePostModal extends React.Component {
             <Container fluid>
               <Row>
                 <Col>
-                  <CreateType insertType={insertType} />
+                  <CreateTypeForm insertType={insertType} />
                 </Col>
               </Row>
             </Container>

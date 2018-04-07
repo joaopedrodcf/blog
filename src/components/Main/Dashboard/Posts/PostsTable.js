@@ -13,13 +13,20 @@ export default class PostsTable extends React.Component {
               <Table responsive dark>
                 <thead>
                   <tr>
-                    <th> Title </th> <th> Description </th> <th> Type </th>
-                    <th> Show more </th> <th> Delete </th>
+                    <th> Title </th>
+                    <th> Description </th>
+                    <th> Type </th>
+                    <th> Show more </th>
+                    <th> Delete </th>
                   </tr>
                 </thead>
                 <tbody>
                   {posts.map(post => (
-                    <PostRow post={post} deletePost={deletePost} />
+                    <PostRow
+                      key={post.id}
+                      post={post}
+                      deletePost={deletePost}
+                    />
                   ))}
                 </tbody>
               </Table>
