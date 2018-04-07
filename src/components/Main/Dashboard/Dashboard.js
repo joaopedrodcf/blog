@@ -3,6 +3,8 @@ import SearchPosts from "./SearchPosts/SearchPosts";
 import SidebarRight from "./SidebarRight";
 import CreateType from "./CreateType/CreateType";
 import CreatePostForm from "./CreatePostForm/CreatePostForm";
+import CreatePostModal from "./CreatePostModal";
+import CreateTypeModal from "./CreateTypeModal";
 import axios from "axios";
 import React from "react";
 import {
@@ -30,7 +32,6 @@ export default class Dashboard extends React.Component {
       posts: [],
       initialPosts: [],
       types: [],
-      modalCreatePost: false,
       modalCreateType: false
     };
 
@@ -38,14 +39,7 @@ export default class Dashboard extends React.Component {
     this.urlType = `http://localhost:8080/type/`;
 
     this.getPosts = this.getPosts.bind(this);
-    this.toggleCreatePost = this.toggleCreatePost.bind(this);
     this.toggleCreateType = this.toggleCreateType.bind(this);
-  }
-
-  toggleCreatePost() {
-    this.setState({
-      modalCreatePost: !this.state.modalCreatePost
-    });
   }
 
   toggleCreateType() {
@@ -95,7 +89,6 @@ export default class Dashboard extends React.Component {
       })
       .then(res => {
         this.getPosts();
-        this.toggleCreatePost();
       });
   }
 
@@ -132,89 +125,28 @@ export default class Dashboard extends React.Component {
   }
 
   render() {
+    // removed the Cols inside the Row of CardBody to have a Flex display
     return (
-      <Container fluid>
-        <Row className="marging-top-card">
+      <Container fluid className="marging-top-card">
+        <Row>
           <Col />
           <Col sm="10" md="10">
             <Card>
               <CardHeader tag="h5">Posts</CardHeader>
               <CardBody>
                 <Row>
-                  <Col sm="8" md="7" lg="9">
-                    <SearchPosts
-                      types={this.state.types}
-                      searchPosts={this.searchPosts.bind(this)}
-                    />
-                  </Col>
-                  <Col sm="2" md="2" lg="1" className="margin-bottom-button">
-                    <Button color="secondary" onClick={this.toggleCreatePost}>
-                      Create Post
-                    </Button>
-                    <Modal
-                      isOpen={this.state.modalCreatePost}
-                      toggle={this.toggleCreatePost}
-                      className={this.props.className}
-                    >
-                      <ModalHeader toggle={this.toggle}>
-                        Create Post
-                      </ModalHeader>
-                      <ModalBody>
-                        <Container fluid>
-                          <Row>
-                            <Col>
-                              <CreatePostForm
-                                types={this.state.types}
-                                insertPost={this.createPost.bind(this)}
-                              />
-                            </Col>
-                          </Row>
-                        </Container>
-                      </ModalBody>
-                      <ModalFooter>
-                        <Button
-                          color="secondary"
-                          onClick={this.toggleCreatePost}
-                        >
-                          Cancel
-                        </Button>
-                      </ModalFooter>
-                    </Modal>
-                  </Col>
-                  <Col sm="2" md="2" lg="1" className="margin-bottom-button">
-                    <Button color="secondary" onClick={this.toggleCreateType}>
-                      Create type
-                    </Button>
-                    <Modal
-                      isOpen={this.state.modalCreateType}
-                      toggle={this.toggleCreateType}
-                      className={this.props.className}
-                    >
-                      <ModalHeader toggle={this.toggleCreateType}>
-                        Create Type
-                      </ModalHeader>
-                      <ModalBody>
-                        <Container fluid>
-                          <Row>
-                            <Col>
-                              <CreateType
-                                insertType={this.createType.bind(this)}
-                              />
-                            </Col>
-                          </Row>
-                        </Container>
-                      </ModalBody>
-                      <ModalFooter>
-                        <Button
-                          color="secondary"
-                          onClick={this.toggleCreateType}
-                        >
-                          Cancel
-                        </Button>
-                      </ModalFooter>
-                    </Modal>
-                  </Col>
-                  <Col />
+                  <SearchPosts
+                    types={this.state.types}
+                    searchPosts={this.searchPosts.bind(this)}
+                  />
+                  <CreatePostModal
+                    types={this.state.types}
+                    insertPost={this.createPost.bind(this)}
+                  />
+                  <CreateTypeModal
+                    types={this.state.types}
+                    insertType={this.createType.bind(this)}
+                  />
                 </Row>
 
                 <PostsTable

@@ -1,5 +1,4 @@
 import ContactForm from "./ContactForm";
-import Sidebar from "./Sidebar";
 
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
