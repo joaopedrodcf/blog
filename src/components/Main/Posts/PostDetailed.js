@@ -41,8 +41,8 @@ export default class PostDetailed extends React.Component {
 
   //  return <div>I'm the post details {this.state.id}</div>;
   render() {
-    var post = Object.assign({}, this.state.post);
-    var type = Object.assign({}, post.type);
+    let post = Object.assign({}, this.state.post);
+    let type = Object.assign({}, post.type);
 
     const { image, title, content } = post;
     const name = type.name;

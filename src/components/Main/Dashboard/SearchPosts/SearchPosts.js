@@ -13,17 +13,17 @@ export default class SearchPosts extends React.Component {
 
   handleSearch(event) {
     const { value } = event.target;
+    const { searchPosts } = this.props;
 
     this.setState(
       { text: value },
       function() {
-        this.props.searchPosts(this.state);
+        searchPosts(this.state);
       }.bind(this)
     );
   }
 
   handleSearchType(event) {
-    console.log(this.state);
     const { value, checked } = event.target;
     var types = this.state.types.slice();
     let index;
@@ -47,6 +47,7 @@ export default class SearchPosts extends React.Component {
 
   render() {
     const { types } = this.props;
+    let typesState = this.state.types;
     return (
       <Form onSubmit={this.handleSubmit} inline>
         <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
@@ -58,7 +59,7 @@ export default class SearchPosts extends React.Component {
             <Label check>
               <Input
                 type="checkbox"
-                checked={this.state.types.includes(type.name)}
+                checked={typesState.includes(type.name)}
                 value={type.name}
                 onChange={this.handleSearchType.bind(this)}
               />

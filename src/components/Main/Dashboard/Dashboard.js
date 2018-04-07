@@ -83,7 +83,6 @@ export default class Dashboard extends React.Component {
   }
 
   createType(type) {
-    console.log(type);
     axios
       .post(this.urlType, {
         name: type.name
@@ -96,9 +95,7 @@ export default class Dashboard extends React.Component {
 
   searchPosts(filters) {
     // This part is important post
-    const text = filters.text;
-    const types = filters.types;
-    console.log(types);
+    const { text, types } = filters;
     axios
       .post(this.urlPost + `filter`, types, {
         params: {
