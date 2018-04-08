@@ -45,6 +45,10 @@ export default class SearchPosts extends React.Component {
     );
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+  }
+
   render() {
     const { types } = this.props;
     let typesState = this.state.types;
