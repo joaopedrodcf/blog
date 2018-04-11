@@ -16,7 +16,7 @@ export default class CreatePostForm extends React.Component {
       content: "",
       image: "",
       type: {
-        name: "IMPORTANT"
+        name: "Important"
       }
     };
   }

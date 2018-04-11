@@ -8,9 +8,36 @@ import {
   CardTitle,
   Button
 } from "reactstrap";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 export default class Post extends React.Component {
+  constructor(props) {
+    super(props);
+
+    const { likes } = this.props.post;
+
+    this.state = {
+      likes: likes
+    };
+
+    this.toggle = this.toggle.bind(this);
+
+    this.urlPost = `http://localhost:8080/post/`;
+  }
+
+  toggle() {
+    axios
+      .put(this.urlPost + `like/${this.props.post.id}`)
+      .then(res => {
+        const newLikes = this.state.likes + 1;
+        this.setState({ likes: newLikes });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
   render() {
     const { id, description, title, image, type: { name } } = this.props.post;
 
@@ -24,6 +51,10 @@ export default class Post extends React.Component {
           <Link to={`/post/${id}`}>
             <Button color="primary">Read more</Button>
           </Link>
+          <Button onClick={this.toggle}>
+            <i className="far fa-thumbs-up" />
+            {this.state.likes}
+          </Button>
         </CardBody>
       </Card>
     );
