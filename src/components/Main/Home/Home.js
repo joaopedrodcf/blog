@@ -16,6 +16,8 @@ export default class Home extends React.Component {
       posts: [],
       pages: 0
     };
+
+    this.url = process.env.REACT_APP_API_HOST + `/post/page/`;
   }
 
   componentDidMount() {
@@ -25,7 +27,7 @@ export default class Home extends React.Component {
   // CRUD for use in the components
   getPostsPagination(page, size) {
     axios
-      .get(`http://localhost:8080/post/page/`, {
+      .get(this.url, {
         params: {
           page: page,
           size: size
