@@ -23,12 +23,12 @@ export default class Post extends React.Component {
 
     this.toggle = this.toggle.bind(this);
 
-    this.urlPost = `http://localhost:8080/post/`;
+    this.url = process.env.REACT_APP_API_HOST;
   }
 
   toggle() {
     axios
-      .put(this.urlPost + `like/${this.props.post.id}`)
+      .put(this.url + `/post/like/${this.props.post.id}`)
       .then(res => {
         const newLikes = this.state.likes + 1;
         this.setState({ likes: newLikes });

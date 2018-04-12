@@ -28,7 +28,7 @@ export default class ContactForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
 
-    this.urlContact = `http://localhost:8080/contact/`;
+    this.urlContact = process.env.REACT_APP_API_HOST + `/contact/`;
 
     this.state = {
       name: "",
