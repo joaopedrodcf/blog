@@ -32,9 +32,8 @@ export default class Dashboard extends React.Component {
       modalCreateType: false
     };
 
-    this.url = process.env.REACT_APP_API_HOST;
-    this.urlPost = `http://localhost:8080/post/`;
-    this.urlType = `http://localhost:8080/type/`;
+    this.urlPost = process.env.REACT_APP_API_HOST + `/post/`;
+    this.urlType = process.env.REACT_APP_API_HOST + `/type/`;
 
     this.getPosts = this.getPosts.bind(this);
   }
