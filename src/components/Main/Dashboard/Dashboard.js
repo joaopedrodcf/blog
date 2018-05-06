@@ -1,9 +1,9 @@
-import PostsTable from "./Posts/PostsTable";
-import SearchPosts from "./SearchPosts/SearchPosts";
-import CreatePostModal from "./CreatePostModal";
-import CreateTypeModal from "./CreateTypeModal";
-import axios from "axios";
-import React from "react";
+import PostsTable from './Posts/PostsTable';
+import SearchPosts from './SearchPosts/SearchPosts';
+import CreatePostModal from './CreatePostModal';
+import CreateTypeModal from './CreateTypeModal';
+import axios from 'axios';
+import React from 'react';
 import {
   Col,
   Container,
@@ -17,8 +17,8 @@ import {
   Modal,
   ModalHeader,
   ModalBody,
-  ModalFooter
-} from "reactstrap";
+  ModalFooter,
+} from 'reactstrap';
 
 // -------------------------This is the main App--------------------------------
 export default class Dashboard extends React.Component {
@@ -29,7 +29,7 @@ export default class Dashboard extends React.Component {
       posts: [],
       initialPosts: [],
       types: [],
-      modalCreateType: false
+      modalCreateType: false,
     };
 
     this.urlPost = process.env.REACT_APP_API_HOST + `/post/`;
@@ -74,8 +74,8 @@ export default class Dashboard extends React.Component {
         image: post.image,
         type: {
           id: post.type.id,
-          name: post.type.name
-        }
+          name: post.type.name,
+        },
       })
       .then(res => {
         this.getPosts();
@@ -85,7 +85,7 @@ export default class Dashboard extends React.Component {
   createType(type) {
     axios
       .post(this.urlType, {
-        name: type.name
+        name: type.name,
       })
       .then(res => {
         this.getTypes();
@@ -99,8 +99,8 @@ export default class Dashboard extends React.Component {
     axios
       .post(this.urlPost + `filter`, types, {
         params: {
-          name: text
-        }
+          name: text,
+        },
       })
       .then(res => {
         const posts = res.data;

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Badge,
   Card,
@@ -13,16 +13,16 @@ import {
   ModalFooter,
   Container,
   Row,
-  Col
-} from "reactstrap";
-import DeleteButton from "./DeleteButton";
-import { Link } from "react-router-dom";
+  Col,
+} from 'reactstrap';
+import DeleteButton from './DeleteButton';
+import { Link } from 'react-router-dom';
 
 export default class PostRow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal: false,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -30,7 +30,7 @@ export default class PostRow extends React.Component {
 
   toggle() {
     this.setState({
-      modal: !this.state.modal
+      modal: !this.state.modal,
     });
   }
 
@@ -41,7 +41,7 @@ export default class PostRow extends React.Component {
       description,
       title,
       image,
-      type: { name }
+      type: { name },
     } = this.props.post;
     const { deletePost } = this.props;
     return (

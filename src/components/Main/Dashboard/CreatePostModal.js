@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Col,
   Row,
@@ -7,9 +7,9 @@ import {
   ModalHeader,
   ModalBody,
   Container,
-  ModalFooter
-} from "reactstrap";
-import CreatePostForm from "./CreatePostForm/CreatePostForm";
+  ModalFooter,
+} from 'reactstrap';
+import CreatePostForm from './CreatePostForm/CreatePostForm';
 
 export default class CreatePostModal extends React.Component {
   constructor(props) {
@@ -18,13 +18,13 @@ export default class CreatePostModal extends React.Component {
     this.toggleCreatePost = this.toggleCreatePost.bind(this);
 
     this.state = {
-      modalCreatePost: false
+      modalCreatePost: false,
     };
   }
 
   toggleCreatePost() {
     this.setState({
-      modalCreatePost: !this.state.modalCreatePost
+      modalCreatePost: !this.state.modalCreatePost,
     });
   }
 

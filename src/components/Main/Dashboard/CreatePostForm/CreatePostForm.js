@@ -1,6 +1,6 @@
-import SelectTypes from "./SelectTypes";
-import React from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import SelectTypes from './SelectTypes';
+import React from 'react';
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
 export default class CreatePostForm extends React.Component {
   constructor(props) {
@@ -11,13 +11,13 @@ export default class CreatePostForm extends React.Component {
     this.handleChangeType = this.handleChangeType.bind(this);
 
     this.state = {
-      title: "",
-      description: "",
-      content: "",
-      image: "",
+      title: '',
+      description: '',
+      content: '',
+      image: '',
       type: {
-        name: "Important"
-      }
+        name: 'Important',
+      },
     };
   }
 
@@ -27,7 +27,7 @@ export default class CreatePostForm extends React.Component {
     const { value, name } = event.target;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -47,8 +47,8 @@ export default class CreatePostForm extends React.Component {
       description: this.state.description,
       image: this.state.image,
       type: {
-        name: this.state.type.name
-      }
+        name: this.state.type.name,
+      },
     };
 
     insertPost(post);

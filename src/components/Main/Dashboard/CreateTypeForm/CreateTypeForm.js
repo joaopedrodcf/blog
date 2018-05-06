@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, Form, FormGroup, Input, Label } from "reactstrap";
+import React from 'react';
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
 export default class CreateTypeForm extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ export default class CreateTypeForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
-      name: ""
+      name: '',
     };
   }
 
@@ -18,11 +18,11 @@ export default class CreateTypeForm extends React.Component {
     event.preventDefault();
 
     const type = {
-      name: this.state.name
+      name: this.state.name,
     };
 
     this.setState({
-      name: ""
+      name: '',
     });
 
     insertType(type);
@@ -32,7 +32,7 @@ export default class CreateTypeForm extends React.Component {
     const { value, name } = event.target;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 

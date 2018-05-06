@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Col,
   Row,
@@ -7,9 +7,9 @@ import {
   ModalHeader,
   ModalBody,
   Container,
-  ModalFooter
-} from "reactstrap";
-import CreateTypeForm from "./CreateTypeForm/CreateTypeForm";
+  ModalFooter,
+} from 'reactstrap';
+import CreateTypeForm from './CreateTypeForm/CreateTypeForm';
 
 export default class CreatePostModal extends React.Component {
   constructor(props) {
@@ -18,13 +18,13 @@ export default class CreatePostModal extends React.Component {
     this.toggleCreateType = this.toggleCreateType.bind(this);
 
     this.state = {
-      modalCreateType: false
+      modalCreateType: false,
     };
   }
 
   toggleCreateType() {
     this.setState({
-      modalCreateType: !this.state.modalCreateType
+      modalCreateType: !this.state.modalCreateType,
     });
   }
 

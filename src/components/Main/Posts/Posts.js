@@ -1,6 +1,6 @@
-import Post from "./Post";
-import React from "react";
-import { Col, Row, CardGroup } from "reactstrap";
+import Post from './Post';
+import React from 'react';
+import { Col, Row, CardGroup } from 'reactstrap';
 
 export default class PostsTable extends React.Component {
   render() {

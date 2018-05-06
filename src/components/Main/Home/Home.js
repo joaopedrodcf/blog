@@ -1,10 +1,10 @@
-import React from "react";
-import { Col, Container, Row } from "reactstrap";
-import axios from "axios";
-import Posts from "../Posts/Posts";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Col, Container, Row } from 'reactstrap';
+import axios from 'axios';
+import Posts from '../Posts/Posts';
+import { Link } from 'react-router-dom';
 //import ShowMoreButton from "../Posts/ShowMoreButton";
-import Paginations from "./Paginations";
+import Paginations from './Paginations';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class Home extends React.Component {
 
     this.state = {
       posts: [],
-      pages: 0
+      pages: 0,
     };
 
     this.url = process.env.REACT_APP_API_HOST + `/post/page/`;
@@ -30,8 +30,8 @@ export default class Home extends React.Component {
       .get(this.url, {
         params: {
           page: page,
-          size: size
-        }
+          size: size,
+        },
       })
       .then(res => {
         console.log(res.data.content);

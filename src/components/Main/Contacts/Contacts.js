@@ -1,7 +1,7 @@
-import ContactForm from "./ContactForm";
+import ContactForm from './ContactForm';
 
-import React from "react";
-import { Col, Container, Row } from "reactstrap";
+import React from 'react';
+import { Col, Container, Row } from 'reactstrap';
 
 const Contacts = () => (
   <Container fluid>

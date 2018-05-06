@@ -1,6 +1,6 @@
-import PostRow from "./PostRow";
-import React from "react";
-import { Col, Row, Table } from "reactstrap";
+import PostRow from './PostRow';
+import React from 'react';
+import { Col, Row, Table } from 'reactstrap';
 
 export default class PostsTable extends React.Component {
   render() {

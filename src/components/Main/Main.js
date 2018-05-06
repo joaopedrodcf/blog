@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 // this is a way of importing the components from the module
-import { NavLink as RRNavLink, Switch, Route } from "react-router-dom";
-import Contacts from "./Contacts/Contacts";
-import Dashboard from "./Dashboard/Dashboard";
-import Home from "./Home/Home";
-import PostDetailed from "./Posts/PostDetailed";
+import { NavLink as RRNavLink, Switch, Route } from 'react-router-dom';
+import Contacts from './Contacts/Contacts';
+import Dashboard from './Dashboard/Dashboard';
+import Home from './Home/Home';
+import PostDetailed from './Posts/PostDetailed';
 import {
   NavbarBrand,
   Navbar,
@@ -12,8 +12,8 @@ import {
   NavLink,
   NavbarToggler,
   Collapse,
-  NavItem
-} from "reactstrap";
+  NavItem,
+} from 'reactstrap';
 
 export default class Main extends React.Component {
   render() {

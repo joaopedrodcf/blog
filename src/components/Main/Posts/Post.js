@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Badge,
   Card,
@@ -6,10 +6,10 @@ import {
   CardImg,
   CardText,
   CardTitle,
-  Button
-} from "reactstrap";
-import axios from "axios";
-import { Link } from "react-router-dom";
+  Button,
+} from 'reactstrap';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default class Post extends React.Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class Post extends React.Component {
     const { likes } = this.props.post;
 
     this.state = {
-      likes: likes
+      likes: likes,
     };
 
     this.toggle = this.toggle.bind(this);
@@ -39,7 +39,13 @@ export default class Post extends React.Component {
   }
 
   render() {
-    const { id, description, title, image, type: { name } } = this.props.post;
+    const {
+      id,
+      description,
+      title,
+      image,
+      type: { name },
+    } = this.props.post;
 
     return (
       <Card color="info">

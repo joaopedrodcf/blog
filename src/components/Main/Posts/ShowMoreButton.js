@@ -1,5 +1,5 @@
-import React from "react";
-import { Button } from "reactstrap";
+import React from 'react';
+import { Button } from 'reactstrap';
 
 export default class ShowMoreButton extends React.Component {
   render() {

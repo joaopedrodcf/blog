@@ -1,13 +1,13 @@
-import React from "react";
-import { Form, FormGroup, Input, Label, Row, Col } from "reactstrap";
+import React from 'react';
+import { Form, FormGroup, Input, Label, Row, Col } from 'reactstrap';
 
 export default class SearchPosts extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      text: "",
-      types: []
+      text: '',
+      types: [],
     };
   }
 
