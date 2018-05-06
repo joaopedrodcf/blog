@@ -1,14 +1,14 @@
-import React from "react";
-import { NavLink as RRNavLink, Switch, Route } from "react-router-dom";
+import React from 'react';
+import { NavLink as RRNavLink } from 'react-router-dom';
 import {
   NavbarBrand,
   Navbar,
   Nav,
   NavLink,
+  NavItem,
   NavbarToggler,
   Collapse,
-  NavItem
-} from "reactstrap";
+} from 'reactstrap';
 
 // Solution of router and reactstrap found on
 // https://github.com/reactstrap/reactstrap/issues/336
@@ -20,13 +20,13 @@ export default class Header extends React.Component {
     this.toggle = this.toggle.bind(this);
 
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
 
   toggle() {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !this.state.isOpen,
     });
   }
 

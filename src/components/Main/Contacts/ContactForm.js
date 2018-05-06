@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Row,
   Col,
@@ -14,9 +14,9 @@ import {
   CardText,
   CardFooter,
   Alert,
-  FormFeedback
-} from "reactstrap";
-import axios from "axios";
+  FormFeedback,
+} from 'reactstrap';
+import axios from 'axios';
 
 // Validation inspired by : https://medium.freecodecamp.org/how-to-use-reacts-controlled-inputs-for-instant-form-field-validation-b1c7b033527e
 export default class ContactForm extends React.Component {
@@ -31,17 +31,17 @@ export default class ContactForm extends React.Component {
     this.urlContact = process.env.REACT_APP_API_HOST + `/contact/`;
 
     this.state = {
-      name: "",
-      email: "",
-      message: "",
+      name: '',
+      email: '',
+      message: '',
       touched: {
         name: false,
         email: false,
-        message: false
+        message: false,
       },
-      nameError: "",
-      emailError: "",
-      messageError: ""
+      nameError: '',
+      emailError: '',
+      messageError: '',
     };
   }
 
@@ -53,7 +53,7 @@ export default class ContactForm extends React.Component {
     const { value, name } = event.target;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -63,7 +63,7 @@ export default class ContactForm extends React.Component {
     const { name } = event.target;
 
     this.setState({
-      touched: { ...this.state.touched, [name]: true }
+      touched: { ...this.state.touched, [name]: true },
     });
   }
 
@@ -75,15 +75,15 @@ export default class ContactForm extends React.Component {
 
   validate(nameOfInput) {
     switch (nameOfInput) {
-      case "name":
+      case 'name':
         return this.state.name.length === 0;
 
         break;
-      case "email":
+      case 'email':
         return this.state.email.length === 0;
 
         break;
-      case "message":
+      case 'message':
         return this.state.message.length === 0;
 
         break;
@@ -102,14 +102,14 @@ export default class ContactForm extends React.Component {
     this.sendMessage();
 
     this.setState({
-      name: "",
-      email: "",
-      message: "",
+      name: '',
+      email: '',
+      message: '',
       touched: {
         name: false,
         email: false,
-        message: false
-      }
+        message: false,
+      },
     });
   }
 
@@ -119,7 +119,7 @@ export default class ContactForm extends React.Component {
       .post(this.urlContact, {
         name: name,
         email: email,
-        message: message
+        message: message,
       })
       .then(res => {
         console.log(res);
@@ -131,9 +131,9 @@ export default class ContactForm extends React.Component {
 
   render() {
     let { name, email, message } = this.state;
-    const errorName = this.shouldMarkError("name");
-    const errorEmail = this.shouldMarkError("email");
-    const errorMessage = this.shouldMarkError("message");
+    const errorName = this.shouldMarkError('name');
+    const errorEmail = this.shouldMarkError('email');
+    const errorMessage = this.shouldMarkError('message');
 
     return (
       <Row className="marging-top-card">
@@ -149,12 +149,12 @@ export default class ContactForm extends React.Component {
                     type="text"
                     name="name"
                     value={name}
-                    className={errorName ? "is-invalid" : ""}
+                    className={errorName ? 'is-invalid' : ''}
                     onBlur={this.handleBlur}
                     onChange={this.handleChange}
                   />
                   <FormFeedback>
-                    {errorName ? "Your name can't be empty" : ""}
+                    {errorName ? "Your name can't be empty" : ''}
                   </FormFeedback>
                 </FormGroup>
                 <FormGroup>
@@ -164,11 +164,11 @@ export default class ContactForm extends React.Component {
                     name="email"
                     value={email}
                     onBlur={this.handleBlur}
-                    className={errorEmail ? "is-invalid" : ""}
+                    className={errorEmail ? 'is-invalid' : ''}
                     onChange={this.handleChange}
                   />
                   <FormFeedback>
-                    {errorEmail ? "Your email can't be empty" : ""}
+                    {errorEmail ? "Your email can't be empty" : ''}
                   </FormFeedback>
                 </FormGroup>
                 <FormGroup>
@@ -178,11 +178,11 @@ export default class ContactForm extends React.Component {
                     name="message"
                     value={message}
                     onBlur={this.handleBlur}
-                    className={errorMessage ? "is-invalid" : ""}
+                    className={errorMessage ? 'is-invalid' : ''}
                     onChange={this.handleChange}
                   />
                   <FormFeedback>
-                    {errorMessage ? "Your message can't be empty" : ""}
+                    {errorMessage ? "Your message can't be empty" : ''}
                   </FormFeedback>
                 </FormGroup>
                 <Button type="submit" value="Submit" disabled={this.validate()}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Badge,
   Card,
@@ -8,9 +8,9 @@ import {
   CardTitle,
   Row,
   Col,
-  Container
-} from "reactstrap";
-import axios from "axios";
+  Container,
+} from 'reactstrap';
+import axios from 'axios';
 
 export default class PostDetailed extends React.Component {
   // This type of constructor is useful basically is doing {match} = this.props.match
@@ -19,10 +19,10 @@ export default class PostDetailed extends React.Component {
 
     this.state = {
       id: match.params.id,
-      post: []
+      post: [],
     };
 
-    this.urlPost = `http://localhost:8080/post/`;
+    this.urlPost = process.env.REACT_APP_API_HOST + `/post/`;
 
     this.getPost = this.getPost.bind(this);
   }
