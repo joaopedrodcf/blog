@@ -113,6 +113,7 @@ export default class ContactForm extends React.Component {
     });
   }
 
+  
   sendMessage() {
     const { name, email, message } = this.state;
     axios
